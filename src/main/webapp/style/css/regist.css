@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+/* body {
+    background-color: #fff;
+} */
+
+.full {
+	background:url('../pics/paojie.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+}
+.bottom{
+	background-color: #ffcc99;
+}
+
+.navbar-fixed-bottom {
+	min-height: 15px;
+}
+.text-center{
+	margin:auto;
+}
+*[role="navigation"]{
+	background-color: #ffcc99;
+	height:10;
+}
+
+
+*[role="form"] {
+    max-width: 530px;
+    min-width:auto;
+    padding: 15px;
+ 	 margin: 70px auto;
+   	
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
