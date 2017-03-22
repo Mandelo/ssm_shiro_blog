@@ -64,6 +64,7 @@
 						<!-- 博客展示 -->
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
+							<li><a href="#" style="margin-top:2px;" id="w"></a></li>
 						<c:if test="${sessionScope.loginUser != null }">
 							<li clsss="dropdown"><a href="#"
 								class="dropdown-toggle glyphicon glyphicon-asterisk"
@@ -234,6 +235,25 @@
 					}
 				});
 			});
+			
+			/* 天气预报 */
+				$.getScript('http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&day=0&city=&dfc=1&charset=utf-8',
+						function(a) {
+							var s = "", r = "", q = "";
+							for (s in window.SWther.w) {
+								q = SWther.w[s][0];
+								r = {
+									city : s,
+									date : SWther.add.now.split(" ")[0] || "",
+									day_weather : q.s1,
+									night_weather : q.s2,
+									day_temp : q.t1,
+									night_temp : q.t2,
+									day_wind : q.p1,
+									night_wind : q.p2
+								}, $("#w").html("["+ r.city+"]"+" "+"白天："+q.s1 + " "+q.t1 +"℃");
+							}
+						});
 		</script>
 </body>
 </html>
