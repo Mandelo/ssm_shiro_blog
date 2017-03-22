@@ -50,6 +50,23 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:mapper/**/*.xml" />
+		<!-- 配置分页插件 -->
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
+					<property name="properties">
+						<value>
+							dialect=mysql
+							reasonable=true
+							supportMethodsArguments=true
+							params=count=countSql
+							autoRuntimeDialect=true
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
 	</bean>
 
 	<!-- 第四章：事务管理 -->
@@ -100,18 +117,17 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<!-- Shiro的核心安全接口,这个属性是必须的 -->
 		<property name="securityManager" ref="securityManager" />
-		<!-- 身份认证失败，则跳转到登录页面的配置 -->
-		<property name="loginUrl" value="/user/login" />
 		<!-- 权限认证失败，则跳转到指定页面 -->
-		<property name="unauthorizedUrl" value="/user/login?msg=unlogin or unauthorized" />
+		<!-- <property name="unauthorizedUrl" value="/user/login?msg=unlogin or 
+			unauthorized" /> -->
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
-			<!-- 静态文件 -->
+				<!-- 静态文件 -->
 				/style/** = anon
+				/cms/** = authc,roles[admin]
 				/** = anon
 				/user/** = anon
-				
 			</value>
 		</property>
 	</bean>

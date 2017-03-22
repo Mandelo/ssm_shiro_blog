@@ -17,6 +17,11 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	
+	<select id="selectIdByName" resultType="java.lang.Integer">
+		select id from role
+		where role_name=#{roleName,jdbcType=VARCHAR}
+	</select>
+	
 	<delete id="deleteById" parameterType="java.lang.Integer">
 		delete from role
 		where id = #{id,jdbcType=INTEGER}

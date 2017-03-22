@@ -4,22 +4,20 @@
 <html class="full">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet"
-	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <!-- 自定义CSS -->
 <link href="${pageContext.request.contextPath }/style/css/regist.css"
 	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
 
 <link rel="stylesheet"
-	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/style/js/jquery.min.js"></script>
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
 <title>注册页面</title>
 
 </head>
@@ -40,7 +38,7 @@
 			createXMLHttpRequest();
 			var url = "${pageContext.request.contextPath }/user/checkUser?username="
 					+ (username.value) + "&time=" + new Date().getTime();
-			//设置请求的方式为post，请求的url，异步提交
+			//设置请求的方式为GET，请求的url，异步提交
 			xmlHttp.open("GET", url, true);
 			//将方法地址赋值给onreadystatechange属性
 			xmlHttp.onreadystatechange = callback;
@@ -56,6 +54,7 @@
 				var text = xmlHttp.responseText;
 				if (text == "true") {
 					document.getElementById("spanUsername").innerHTML = "用户名已被使用!";
+					document.getElementById("username").focus();
 				} else {
 					document.getElementById("spanUsername").innerHTML = "恭喜！用户名可用！";
 				}

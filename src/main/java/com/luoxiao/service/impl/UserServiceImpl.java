@@ -1,5 +1,7 @@
 package com.luoxiao.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,16 @@ public class UserServiceImpl implements UserService {
 		}else{
 			return true;
 		}
+	}
+
+	@Override
+	public List<User> selectAll() {
+		return userDao.selectAll();
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		userDao.deleteById(id);
 	}
 
 }

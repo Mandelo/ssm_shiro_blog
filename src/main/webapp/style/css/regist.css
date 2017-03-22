@@ -1,28 +1,22 @@
 @CHARSET "UTF-8";
-/* body {
-    background-color: #fff;
-} */
 
-.full {
-	background:url('../pics/paojie.jpg') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;
-	-o-background-size: cover;
+body{
+	background-color: black;
 }
+
 .bottom{
 	background-color: #ffcc99;
 }
 
 .navbar-fixed-bottom {
-	min-height: 15px;
+	min-height: 10px;
 }
 .text-center{
-	margin:auto;
+	margin:5px auto;
 }
 *[role="navigation"]{
 	background-color: #ffcc99;
-	height:10;
+	height:15;
 }
 
 

@@ -1,14 +1,18 @@
 package com.luoxiao.dao;
 
+import java.util.List;
+
 import com.luoxiao.model.User;
 
 public interface UserDao {
 
-	int deleteById(Integer id);
+	void deleteById(Integer id);
 	
 	int insert(User record);
 	
 	int insertSelective(User record);
+	
+	List<User> selectAll();
 	
 	User selectById(Integer id);
 	

@@ -32,7 +32,6 @@
 		ur.role_id = r.id
 		where u.username = #{username,jdbcType=VARCHAR}
 	</select>
-
 	<select id="getPermissions" resultType="java.lang.String">
 		select distinct
 		p.permission_name

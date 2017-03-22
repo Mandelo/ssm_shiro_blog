@@ -4,17 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>注册成功！</title>
 </head>
 <body>
 	<script>
-		var t = 1;//设定跳转的时间 
+		var t = 5;//设定跳转的时间 
 		setInterval("refer()", 1000); //启动1秒定时 
 		function refer() {
 			if (t == 0) {
 				location = "index"; //#设定跳转的链接地址 
 			}
-			document.getElementById('show').innerHTML = "" + t + "秒后跳转到百度"; // 显示倒计时 
+			document.getElementById('show').innerHTML = "注册成功！" + t + "秒后自动跳转到首页"; // 显示倒计时 
 			t--; // 计数器递减 
 			//本文转自： 
 		}

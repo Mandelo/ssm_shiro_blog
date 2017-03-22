@@ -10,6 +10,8 @@ public interface UserRoleService {
 
 	UserRole selectByUserId(Integer userId);
 	
-	int insert(UserRole record);
+	void insert(UserRole record);
+	
+	void deleteById(Integer id);
 	
 }

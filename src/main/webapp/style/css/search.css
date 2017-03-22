@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+body{
+    background-color: #ffffff;
+}
+
+/*顶部导航栏*/
+.topbody {
+    height: 60px;
+    width: 100%;
+    background-color: royalblue;
+}
+
+body, div, ul, li {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-size: 18px;
+}
+
+li {
+    float: left;
+}
+
+.toplist {
+    display: inline-block;
+    list-style-type: none;
+}
+
+.toplist a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 15px 20px 15px 20px;
+    display: block;
+}
+
+.right {
+    position: absolute;
+    margin-left: 90%;
+}
+.right1 {
+    position: absolute;
+    margin-left: 90%;
+}
+
+.total{
+    position:absolute;
+    margin-top: 200px;
+    margin-left: -200px;
+    left: 50%;
+}
+
+/*图片*/
+img {
+    position: relative;
+    left: 50%;
+    margin-left: -150px;
+    width: 400px;
+    height: 150px;
+}
+
+/*搜索框*/
+.search {
+    position: relative;
+    left: 50%;
+    top: 60%;
+    margin-left: -200px;
+    margin-top: 50px;
+}
+
+.input {
+    border-width: 1px;
+    position: absolute;
+    margin: auto;
+    width: 400px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.button {
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    height: 36px;
+    color: aliceblue;
+    background-color: dodgerblue;
+    width: 100px;
+    margin-top: 0px;
+    margin-left: 401px;
+}
+/**/
+tr:hover{
+    background-color: dodgerblue;
+}
+
+td{
+    width:401px;
+}

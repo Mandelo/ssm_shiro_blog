@@ -3,6 +3,7 @@ package com.luoxiao.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.luoxiao.dao.UserDao;
 import com.luoxiao.dao.UserRoleDao;
 import com.luoxiao.model.UserRole;
 import com.luoxiao.service.UserRoleService;
@@ -24,8 +25,14 @@ public class UserRoleServiceImpl implements UserRoleService{
 	}
 
 	@Override
-	public int insert(UserRole record) {
-		return userRoleDao.insert(record);
+	public void insert(UserRole record) {
+		userRoleDao.insert(record);
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		userRoleDao.deleteById(id);
+		
 	}
 
 }

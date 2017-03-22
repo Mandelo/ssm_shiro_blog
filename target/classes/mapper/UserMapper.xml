@@ -21,6 +21,12 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	
+	<select id = "selectAll" resultMap = "BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from user
+	</select>
+	
 	<select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
@@ -29,9 +35,8 @@
 	</select>
 
 	<delete id="deleteById" parameterType="java.lang.Integer">
-		delete from user
-		where id =
-		#{id,jdbcType=INTEGER}
+		<!-- DELETE user,user_role FROM user LEFT JOIN user_role ON user.id = user_role.user_id WHERE user.id= #{id,jdbcType = INTEGER} -->	
+		DELETE from user where id = #{id,jdbcType = INTEGER}
 	</delete>
 
 	<insert id="insert" parameterType="com.luoxiao.model.User">
@@ -54,7 +59,7 @@
 				birth,
 			</if>
 			<if test="gender != null">
-				gender,
+				gender
 			</if>
 		</trim>
 		values

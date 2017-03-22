@@ -8,9 +8,9 @@ import com.luoxiao.model.UserRole;
  */
 public interface UserRoleDao {
 	
-	int deleteById(Integer id);
+	void deleteById(Integer id);
 	
-	int insert(UserRole record);
+	void insert(UserRole record);
 	
 	int insertSelective(UserRole record);
 	
