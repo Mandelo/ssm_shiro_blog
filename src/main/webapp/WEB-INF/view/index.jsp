@@ -134,17 +134,18 @@ body {
 			</ul>
 			<P>2.前端</P>
 			<ul>
-				<li>JS框架：jQuery min</li>
-				<li>布局：CSS+bootstrap</li>
-				<li>富文本编辑器：WangEditor</li>
+				<li>布局：DIV+CSS bootstrap</li>
 				<li>字体：fonts-awesome</li>
 				<li>登录框：bootstrap Modal</li>
+				<li>JS框架：jQuery min</li>
 				<li>日历控件：自定义js</li>
+				<li>实时天气：新浪天气api</li>
+				<li>富文本编辑器：WangEditor</li>
 			</ul>
 			<P>3.开发平台</P>
 			<ul>
 				<li>开发环境： jdk1.8 + tomcat8</li>
-				<li>语言：JAVA jsp</li>
+				<li>语言：java jsp</li>
 				<li>开发环境：Java EE、Eclipse、Maven、webStrom</li>
 			</ul>
 		</div>

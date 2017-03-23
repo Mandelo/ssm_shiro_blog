@@ -37,16 +37,16 @@
 		method="post" style="margin-top: 250px">
 		<div class="form-group">
 			<div class="col-md-3"></div>
-			<label for="inputTitle" class="control-label" id="title" size="10" maxlength="20">(标题推荐20字以内)</label>
+			<label for="inputTitle" class="control-label" id="title" >(标题推荐20字以内)</label>
 			<div class="col-md-5 text-left">
-				<input type="text" class="form-control" name="title" size="20">
+				<input type="text" class="form-control" name="title" size="20" maxlength="20">
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<textarea id="textarea1" name="content" rows="15">
+				<textarea id="textarea1" name="content" rows="15" maxlength="1000">
    				 <p>请输入内容...</p>
 				</textarea>
 			</div>
