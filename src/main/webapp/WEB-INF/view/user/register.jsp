@@ -8,95 +8,128 @@
 <!-- 自定义CSS -->
 <link href="${pageContext.request.contextPath }/style/css/regist.css"
 	rel="stylesheet">
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
-
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="${pageContext.request.contextPath }/style/js/jquery.min.js"></script>
 
-<script src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
 <title>注册页面</title>
 
 </head>
 <!-- ajax验证用户名可用 -->
+<%-- var url = "${pageContext.request.contextPath }/user/checkUser?username="
+					+ (username.value) + "&time=" + new Date().getTime(); --%>
 <script type="text/javascript">
-	var xmlHttp;
-	function createXMLHttpRequest() {
-		//表示当前浏览器不是ie,如ns,firefox  
-		if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
+	function validate() {
+		var username = $("#username").val();
+		var password = $("#password").val();
+		var email = $("#email").val();
+		var birth = $("#birthDate").val();
+		var gender = $('input:radio:checked').val();
+		if (username == "") {
+			$("#spanUsername")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>用户名不能为空！</b>");
+			$("#username").focus();
+			return;
 		} else {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			validateUsername();
 		}
-	}
-	function validate(username) {
-		if ((username.value).length != 0) {
-			/* 创建Ajax核心对象XMLHttpRequest */
-			createXMLHttpRequest();
-			var url = "${pageContext.request.contextPath }/user/checkUser?username="
-					+ (username.value) + "&time=" + new Date().getTime();
-			//设置请求的方式为GET，请求的url，异步提交
-			xmlHttp.open("GET", url, true);
-			//将方法地址赋值给onreadystatechange属性
-			xmlHttp.onreadystatechange = callback;
-			xmlHttp.send(null);
+		if (password == "") {
+			$("#spanPassword")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>密码不能为空！</b>");
+			$("#password").focus();
+			return;
 		} else {
-			
-			document.getElementById("spanUsername").innerHTML = "";
+			$("#spanPassword").html("");
 		}
+		if (email == "") {
+			$("#spanEmail")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>email不能为空！</b>");
+			$("#email").focus();
+			return;
+		} else {
+			$("#spanEmail").html("");
+		}
+
+		if (birth == "") {
+			$("#spanBirth")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>年月不能为空！</b>");
+			$("#birthDate").focus();
+			return;
+		} else {
+			$("#spanBirth").html("");
+		}
+		$("#form1").submit();
+
 	}
-	function callback() {
-		//4表示有响应
-		if (xmlHttp.readyState == 4) {
-			if (xmlHttp.status == 200) {
-				var text = xmlHttp.responseText;
-				if (text == "true") {
-					document.getElementById("spanUsername").innerHTML ="<font color='red'>用户名已被使用!</font>";
-					document.getElementById("submit1").disabled=true;
-					document.getElementById("username").focus();
-				} else {
-					document.getElementById("spanUsername").innerHTML = "<font-color='green'>恭喜！用户名可用！</font>";
-				}
-			}
-		}
+	/* 检查用户名是否可用 */
+	function validateUsername() {
+		$.ajax({
+					type : "GET",
+					url : "${pageContext.request.contextPath }/user/checkUser?username="
+							+ (username.value)
+							+ "&time="
+							+ new Date().getTime(),
+					async : true,
+					success : function(res) {
+						if (res == "true") {
+							$("#spanUsername")
+									.html(
+											"<b style='color:red;font-size:15px;margin:5px auto;text-align:left'>用户名已被使用！</b>");
+							$("#username").focus();
+							return;
+						} else {
+							$("#spanUsername").html("");
+						}
+					}
+				})
 	}
 </script>
 <body>
 	<div class="container-fluid full">
 		<form action="${pageContext.request.contextPath }/user/regist"
-			class="form-horizontal" role="form" method="post">
+			class="form-horizontal" role="form" method="post" id="form1">
 			<h2>欢迎注册</h2>
 			<div class="form-group">
 				<label for="firstName" class="col-sm-3 control-label">用户名</label>
-				<div class="col-sm-9">
-					<input name="username" type="text" id="username"
-						placeholder="请输入用户名" class="form-control" autofocus
-						onblur="validate(this)" /><span id="spanUsername"></span>
+				<div class="col-sm-5">
+					<input name="username" type="text" id="username" maxlength="10"
+						placeholder="请输入用户名" class="input form-control" autofocus />
 				</div>
+				<label class="col-sm-3 control-label" id="spanUsername"></label>
 			</div>
+
 			<div class="form-group">
 				<label for="password" class="col-sm-3 control-label">密码</label>
-				<div class="col-sm-9">
-					<input name="password" type="password" id="password"
-						placeholder="Password" class="form-control">
+				<div class="col-sm-5">
+					<input name="password" type="password" id="password" maxlength="15"
+						placeholder="请输入密码" class="input form-control">
 				</div>
+
+				<label class="col-sm-3 control-label" id="spanPassword"></label>
 			</div>
 			<div class="form-group">
 				<label for="email" class="col-sm-3 control-label">Email</label>
-				<div class="col-sm-9">
+				<div class="col-sm-5">
 					<input name="email" type="email" id="email" placeholder="Email"
 						class="form-control">
 				</div>
+				<label class="col-sm-3 control-label" id="spanEmail"></label>
 			</div>
 
 			<div class="form-group">
 				<label for="birthDate" class="col-sm-3 control-label">出生年月</label>
-				<div class="col-sm-9">
+				<div class="col-sm-5">
 					<input name="birth" type="date" id="birthDate" class="form-control">
 				</div>
+				<label class="col-sm-3 control-label" id="spanBirth"></label>
 			</div>
 
 			<div class="form-group">
@@ -105,12 +138,13 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<label class="radio-inline"> <input name="gender"
-								type="radio" id="femaleRadio" value="Female">女
+								class="gender" type="radio" id="femaleRadio" value="Female"
+								checked=true>女
 							</label>
 						</div>
 						<div class="col-sm-6">
 							<label class="radio-inline"> <input name="gender"
-								type="radio" id="maleRadio" value="Male">男
+								class="gender" type="radio" id="maleRadio" value="Male">男
 							</label>
 						</div>
 
@@ -125,7 +159,8 @@
 			<!-- /.form-group -->
 			<div class="form-group">
 				<div class="col-sm-8 col-sm-offset-3">
-					<button type="submit" id="submit1" class="btn btn-primary btn-block">立即注册</button>
+					<button type="button" id="submit1"
+						class="btn btn-primary btn-block" onclick="validate()">立即注册</button>
 				</div>
 			</div>
 		</form>

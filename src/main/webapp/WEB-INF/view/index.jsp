@@ -7,7 +7,6 @@
 <head>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
-
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
 
@@ -19,14 +18,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>首页</title>
 <style type="text/css">
-	body{
+body {
 	background-color: #f5f5f5;
-	}
-	
-	#contents{
+}
+
+#contents {
 	background-color: #FFF;
-	padding-left:20px;
-	}
+	padding-left: 20px;
+}
 </style>
 </head>
 <body>
@@ -64,7 +63,7 @@
 						<!-- 博客展示 -->
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
-							<li><a href="#" style="margin-top:2px;" id="w"></a></li>
+						<li><a href="#" style="margin-top: 2px;" id="w"></a></li>
 						<c:if test="${sessionScope.loginUser != null }">
 							<li clsss="dropdown"><a href="#"
 								class="dropdown-toggle glyphicon glyphicon-asterisk"
@@ -99,13 +98,14 @@
 				</div>
 			</div>
 			</nav>
-			</div>
-
-			<br> <br> <br> <br> <br> <br>
 		</div>
-		<!-- Content -->
-		<div class = "row"><div class="col-md-3"></div>
-			<div class="col-md-6" id = contents>
+
+		<br> <br> <br> <br> <br> <br>
+	</div>
+	<!-- Content -->
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6" id=contents>
 			<h1>关于DEMO</h1>
 			<h2>简介</h2>
 			<h2>快速使用</h2>
@@ -123,7 +123,7 @@
 				<li>角色管理：实现对用户-角色的查看，删除，分配等操作。</li>
 			</ol>
 			<h2>技术选型</h2>
-				<p>1.后端</p>
+			<p>1.后端</p>
 			<ul>
 				<li>核心框架：Spring Framework 4.2.7</li>
 				<li>安全框架：Apache Shiro 1.2.4</li>
@@ -132,111 +132,112 @@
 				<li>日志管理：SLF4J 、Log4j</li>
 				<li>分页插件：PapeHelper</li>
 			</ul>
-				<P>2.前端</P>
-				<ul>
-					<li>JS框架：jQuery min</li>
-					<li>布局：CSS+bootstrap</li>
-					<li>富文本编辑器：WangEditor</li>
-					<li>字体：fonts-awesome</li>
-					<li>登录框：bootstrap Modal</li>
-					<li>日历控件：自定义js</li>
-				</ul>
-				<P>3.开发平台</P>
-				<ul>
-					<li>开发环境： jdk1.8 + tomcat8</li>
-					<li>语言：JAVA jsp</li>
-					<li>开发环境：Java EE、Eclipse、Maven、webStrom</li>
-				</ul>
+			<P>2.前端</P>
+			<ul>
+				<li>JS框架：jQuery min</li>
+				<li>布局：CSS+bootstrap</li>
+				<li>富文本编辑器：WangEditor</li>
+				<li>字体：fonts-awesome</li>
+				<li>登录框：bootstrap Modal</li>
+				<li>日历控件：自定义js</li>
+			</ul>
+			<P>3.开发平台</P>
+			<ul>
+				<li>开发环境： jdk1.8 + tomcat8</li>
+				<li>语言：JAVA jsp</li>
+				<li>开发环境：Java EE、Eclipse、Maven、webStrom</li>
+			</ul>
 		</div>
-		</div>
-		<!--   登录弹窗 -->
-		<div id="loginModal" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h1 class="text-center text-primary">欢迎登录</h1>
-					</div>
-					<div class="modal-body">
-						<form id="login1" action="user/login" method="post"
-							class="form col-md-12 center-block">
-							<div class="form-group">
-								<input id="username" name="username" type="text"
-									class="form-control input-lg" placeholder="用户名">
-							</div>
-							<div class="form-group">
-								<input id="password" name="password" type="password"
-									class="form-control input-lg" placeholder="登录密码">
-							</div>
-							<div class="form-group">
-								<div id="loginInfo"></div>
-							</div>
-							<div class="form-group">
-								<button id="submit1" class="btn btn-primary btn-lg btn-block"
-									type="button" onclick="validatePassword()">立刻登录</button>
-							</div>
-						</form>
-					</div>
-
-
-					<div class="modal-footer"></div>
+	</div>
+	<!--   登录弹窗 -->
+	<div id="loginModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h1 class="text-center text-primary">欢迎登录</h1>
 				</div>
+				<div class="modal-body">
+					<form id="login1" action="user/login" method="post"
+						class="form col-md-12 center-block">
+						<div class="form-group">
+							<input id="username" name="username" type="text"
+								class="form-control input-lg" placeholder="用户名">
+						</div>
+						<div class="form-group">
+							<input id="password" name="password" type="password"
+								class="form-control input-lg" placeholder="登录密码">
+						</div>
+						<div class="form-group">
+							<div id="loginInfo"></div>
+						</div>
+						<div class="form-group">
+							<button id="submit1" class="btn btn-primary btn-lg btn-block"
+								type="button" onclick="validatePassword()">立刻登录</button>
+						</div>
+					</form>
+				</div>
+
+
+				<div class="modal-footer"></div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			function validatePassword() {
-				var username = $("#username").val();
-				var password = $("#password").val();
-				/* 判断用户名密码是否为空 */
-				if (username == "") {
-					$("#loginInfo")
-							.html(
-									"<b style='color:red;font-size:15px;'>用户名不能为空！</b>");
-					$("#username").focus();
-					return;
-				}
-				if (password == "") {
-					$("#loginInfo").html(
-							"<b style='color:red;font-size:15px;'>密码不能为空！</b>");
-					$("#password").focus();
-					return;
-				}
-				/* ajax验证密码 */
-				$
-						.ajax({
-							type : "GET",
-							url : "validatePassword",
-							data : {
-								"username" : username
-							},
-							async : true,
-							success : function(data) {
-								/* alert(password==data); */
-								if (password == data) {
-									$("#login1").submit();
-								} else {
-									$("#loginInfo")
-											.html(
-													"<b style='color:red;font-size:15px;'>用户名或密码错误！</b>");
-								}
-								/* alert(data); */
-							}
-						})
+	</div>
+	<script type="text/javascript">
+		function validatePassword() {
+			var username = $("#username").val();
+			var password = $("#password").val();
+			/* 判断用户名密码是否为空 */
+			if (username == "") {
+				$("#loginInfo").html(
+						"<b style='color:red;font-size:15px;'>用户名不能为空！</b>");
+				$("#username").focus();
+				return;
 			}
-			/* Enter提交 */
-			$(document).ready(function() {
-				$("body").keydown(function(e) {
-					var curKey = e.which;
-					if (curKey == 13) {
-						/* 这里一定不能为“sunbmit”详情见官方api文档 */
-						$("#submit1").click();
-						return false;
-					}
-				});
+			if (password == "") {
+				$("#loginInfo").html(
+						"<b style='color:red;font-size:15px;'>密码不能为空！</b>");
+				$("#password").focus();
+				return;
+			}
+			/* ajax验证密码 */
+			$
+					.ajax({
+						type : "GET",
+						url : "validatePassword",
+						data : {
+							"username" : username
+						},
+						async : true,
+						success : function(data) {
+							/* alert(password==data); */
+							if (password == data) {
+								$("#login1").submit();
+							} else {
+								$("#loginInfo")
+										.html(
+												"<b style='color:red;font-size:15px;'>用户名或密码错误！</b>");
+							}
+							/* alert(data); */
+						}
+					})
+		}
+		/* Enter提交 */
+		$(document).ready(function() {
+			$("body").keydown(function(e) {
+				var curKey = e.which;
+				if (curKey == 13) {
+					/* 这里一定不能为“sunbmit”详情见官方api文档 */
+					$("#submit1").click();
+					return false;
+				}
 			});
-			
-			/* 天气预报 */
-				$.getScript('http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&day=0&city=&dfc=1&charset=utf-8',
+		});
+
+		/* 天气预报 */
+		$
+				.getScript(
+						'http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&day=0&city=&dfc=1&charset=utf-8',
 						function(a) {
 							var s = "", r = "", q = "";
 							for (s in window.SWther.w) {
@@ -250,9 +251,11 @@
 									night_temp : q.t2,
 									day_wind : q.p1,
 									night_wind : q.p2
-								}, $("#w").html("["+ r.city+"]"+" "+q.s1 + " "+q.t1 +"℃");
+								}, $("#w").html(
+										"[" + r.city + "]" + " " + q.s1 + " "
+												+ q.t1 + "℃");
 							}
 						});
-		</script>
+	</script>
 </body>
 </html>
