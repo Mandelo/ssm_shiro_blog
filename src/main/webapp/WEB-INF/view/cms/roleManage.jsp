@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath }/style/js/jquery.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
@@ -85,8 +86,11 @@ table td {
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button type="button" value="保存"
-							onclick="update();">保存</button></td>
+					<td colspan="2"><button class="btn btn-primary" type="button"
+							value="保存" onclick="update();">保存</button> <!-- 返回并刷新 -->
+						<button type="button" value="返回" class="btn btn-default"
+							onclick="javascript:location.href=document.referrer; ">返回</button></td>
+
 				</tr>
 			</table>
 		</form>
@@ -117,9 +121,9 @@ table td {
 		/* 填充返回数据 */
 		function loadData(res) {
 			var url = location.search;
-			if (url.indexOf("?") != -1) { 
-				var str = url.substr(1); 
-				strs = str.split("="); 
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("=");
 				var userId = strs[1];
 				var username = res.username;
 				var role = res.roles;
@@ -138,9 +142,9 @@ table td {
 		/*点击保存按钮更新数据  */
 		function update() {
 			var url = location.search;
-			if (url.indexOf("?") != -1) { 
-				var str = url.substr(1); 
-				strs = str.split("="); 
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("=");
 				var userId = strs[1];
 				var roles = [];
 				$("#select1 option:selected").each(function() {

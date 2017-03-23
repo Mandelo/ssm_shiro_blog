@@ -108,7 +108,6 @@
 			<div class="col-md-6" id = contents>
 			<h1>关于DEMO</h1>
 			<h2>简介</h2>
-			<p>工作之余做的练习demo，由于个人时间精力以及技术有限，仅完成主体功能，其他功能后续补充。</p>
 			<h2>快速使用</h2>
 			<ol>
 				<li>导入sql文件，修改数据库文件，update项目</li>
@@ -251,7 +250,7 @@
 									night_temp : q.t2,
 									day_wind : q.p1,
 									night_wind : q.p2
-								}, $("#w").html("["+ r.city+"]"+" "+"白天："+q.s1 + " "+q.t1 +"℃");
+								}, $("#w").html("["+ r.city+"]"+" "+q.s1 + " "+q.t1 +"℃");
 							}
 						});
 		</script>

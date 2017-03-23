@@ -309,7 +309,6 @@ public class MainController {
 
 	/**
 	 * 博客展示
-	 * 
 	 * @param id
 	 * @return
 	 */

@@ -44,6 +44,7 @@
 			xmlHttp.onreadystatechange = callback;
 			xmlHttp.send(null);
 		} else {
+			
 			document.getElementById("spanUsername").innerHTML = "";
 		}
 	}
@@ -53,10 +54,11 @@
 			if (xmlHttp.status == 200) {
 				var text = xmlHttp.responseText;
 				if (text == "true") {
-					document.getElementById("spanUsername").innerHTML = "用户名已被使用!";
+					document.getElementById("spanUsername").innerHTML ="<font color='red'>用户名已被使用!</font>";
+					document.getElementById("submit1").disabled=true;
 					document.getElementById("username").focus();
 				} else {
-					document.getElementById("spanUsername").innerHTML = "恭喜！用户名可用！";
+					document.getElementById("spanUsername").innerHTML = "<font-color='green'>恭喜！用户名可用！</font>";
 				}
 			}
 		}
@@ -123,21 +125,12 @@
 			<!-- /.form-group -->
 			<div class="form-group">
 				<div class="col-sm-8 col-sm-offset-3">
-					<button type="submit" class="btn btn-primary btn-block">立即注册</button>
+					<button type="submit" id="submit1" class="btn btn-primary btn-block">立即注册</button>
 				</div>
 			</div>
 		</form>
 		<!-- /form -->
 		<!-- <strong>© 2017 - Site Built By LuoXiao</strong> -->
 	</div>
-	<!-- ./container -->
-
-	<nav class="navbar navbar-fixed-bottom" role="navigation">
-	<div class="container-fluid">
-		<p class="text-center">
-			© 2017 - Site Built By <strong>LuoXiao</strong>
-		</p>
-	</div>
-	</nav>
 </body>
 </html>
