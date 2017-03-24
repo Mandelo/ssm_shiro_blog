@@ -27,6 +27,7 @@
 		var username = $("#username").val();
 		var password = $("#password").val();
 		var email = $("#email").val();
+		var reg =  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 		var birth = $("#birthDate").val();
 		var gender = $('input:radio:checked').val();
 		var okUsername = false;
@@ -51,9 +52,14 @@
 		if (email == "") {
 			$("#spanEmail").html("<b style='color:red;font-size:15px;margin-top:auto;'>email不能为空！</b>");
 		} else {
+			if(reg.test(email)){
+				
 			$("#spanEmail").html(
 							"<div class='glyphicon glyphicon-ok' style='float:left'></div>");
 			okEmail = true;
+			}else{
+				$("#spanEmail").html("<b style='color:red;font-size:15px;margin-top:auto;'>email格式错误！</b>");
+			}
 		}
 
 		if (birth == "") {
@@ -98,6 +104,9 @@
 	}
 </script>
 <body>
+<div id = "top">
+	<a href="${pageContext.request.contextPath }/index">&lt;&lt;返回首页</a>
+</div>
 	<div class="container-fluid full">
 		<form action="${pageContext.request.contextPath }/user/regist"
 			class="form-horizontal" role="form" method="post" id="form1">

@@ -1,7 +1,22 @@
 @CHARSET "UTF-8";
 
 .full {
-	background-color: green;
+		background:url('../pics/register.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+}
+
+body #top{
+	height:40px;
+	background-color: #000;
+	font-size:20px;
+	padding:5px;
+}
+
+body #top a{
+	color:#fff;
 }
 
 .navbar-fixed-bottom {
