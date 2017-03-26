@@ -1,6 +1,6 @@
 # ssm_shiro_blog
 <h2>简介</h2>
-<p>java菜鸟一只，个人工作之余开发的Spring+SpringMVC+Mybatis+Shiro博客demo。由于时间精力有限仅完成了部分模块，持续开发中。</p>
+<p>个人工作之余开发的Spring+SpringMVC+Mybatis+Shiro博客demo。由于时间精力有限仅完成了部分模块，持续开发中。</p>
 <h2>已实现功能</h2>
 <ul>
 <li>登录注册ajax校验</li>
