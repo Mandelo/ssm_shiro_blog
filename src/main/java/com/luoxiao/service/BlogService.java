@@ -8,6 +8,8 @@ public interface BlogService {
 
 	void insert(Blog blog);
 	
+	void deleteById(Integer id);
+	
 	Blog selectById(Integer id);
 	
 	List<Blog> selectAllbyUserId(Integer userId,Integer page,Integer rows);

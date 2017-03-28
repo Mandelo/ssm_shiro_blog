@@ -88,10 +88,6 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<div class="text">
-					<h3>说明：</h3>
-					<p>1.本页面为超级管理员页面。只有role为admin才能访问。</p>
-				</div>
 			</div>
 		</div>
 	</div>

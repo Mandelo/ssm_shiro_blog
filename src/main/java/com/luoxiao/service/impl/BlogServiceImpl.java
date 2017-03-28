@@ -38,6 +38,12 @@ public class BlogServiceImpl implements BlogService{
 	public Blog selectById(Integer id) {
 		return blogDao.selectById(id);
 	}
+
+	@Override
+	public void deleteById(Integer id) {
+		blogDao.deleteById(id);
+		
+	}
 	
 	
 	

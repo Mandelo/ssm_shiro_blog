@@ -61,6 +61,7 @@ public class MainController {
 
 	/**
 	 * 跳转首页
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -70,6 +71,7 @@ public class MainController {
 
 	/**
 	 * 注册
+	 * 
 	 * @param user
 	 * @return
 	 */
@@ -107,6 +109,7 @@ public class MainController {
 
 	/**
 	 * 登录功能
+	 * 
 	 * @param user
 	 * @param model
 	 * @return
@@ -125,6 +128,7 @@ public class MainController {
 
 	/**
 	 * 登出，清除session
+	 * 
 	 * @param session
 	 * @return
 	 */
@@ -136,6 +140,7 @@ public class MainController {
 
 	/**
 	 * ajax 检查用户名是否可用
+	 * 
 	 * @param username
 	 * @return
 	 */
@@ -150,6 +155,7 @@ public class MainController {
 
 	/**
 	 * ajax验证用户名密码
+	 * 
 	 * @return
 	 */
 	@ResponseBody
@@ -166,6 +172,7 @@ public class MainController {
 
 	/**
 	 * 跳转到写博客页面
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/user/toAddBlog")
@@ -175,6 +182,7 @@ public class MainController {
 
 	/**
 	 * 角色管理界面
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/cms/userManage")
@@ -199,15 +207,16 @@ public class MainController {
 
 	/**
 	 * 跳转角色管理页面
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/roleManage")
 	public String roleManage() {
 		return "/cms/roleManage";
 	}
-	
-	@RequestMapping(value="user/blogExample")
-	public String blogContent(){
+
+	@RequestMapping(value = "user/blogExample")
+	public String blogContent() {
 		return "user/blogExample";
 	}
 
@@ -255,8 +264,8 @@ public class MainController {
 			userRole.setUserId(userId);
 			userRole.setRoleId(roleId);
 			userRoleService.insert(userRole);
-			// 重新获取结果
 		}
+		// 重新获取结果
 		User user = userService.selectById(userId);
 		List<String> roles = userExtendService.getRoles(user.getUsername());
 		u.setId(userId);
@@ -308,7 +317,8 @@ public class MainController {
 	}
 
 	/**
-	 * 博客展示
+	 * 博客
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -346,6 +356,15 @@ public class MainController {
 		return mv;
 	}
 
+	// 删除博客
+	@RequestMapping(value = "/delete",method=RequestMethod.GET)
+	public ModelAndView delete(@RequestParam(value="id")Integer id) {
+		ModelAndView mv = new ModelAndView();
+		blogService.deleteById(id);
+		mv.setViewName("redirect:/user/blog_list");
+		return mv;
+	}
+	
 	/**
 	 * 模糊搜索分页，用于智能搜索提示，分页未使用。
 	 * 
@@ -364,6 +383,5 @@ public class MainController {
 		PageHelper.startPage(page, rows);
 		return list;
 	}
-
 
 }

@@ -49,16 +49,17 @@ body {
 						<li class=""><a href="index" class="glyphicon glyphicon-home">首页</a></li>
 						<li class="dropdown"><a href="#"
 							class="dropdown-toggle glyphicon glyphicon-inbox"
-							data-toggle="dropdown">博客中心<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<c:if test="${sessionScope.loginUser != null }">
+							data-toggle="dropdown">博客中心<strong class="caret"></strong></a> <c:if
+								test="${sessionScope.loginUser != null }">
+								<ul class="dropdown-menu">
 									<li><a href="user/toAddBlog"
 										class="glyphicon glyphicon-pencil"> 写博客</a></li>
 									<li><a
 										href="${pageContext.request.contextPath }/user/blog_list?userId=${loginUser.id}"
 										class="glyphicon glyphicon-inbox"> 我的博客</a></li>
-								</c:if>
-							</ul> <!-- 进入搜索页面 -->
+								</ul>
+								<!-- 进入搜索页面 -->
+							</c:if>
 						<li><a href="search" class="glyphicon glyphicon-search">搜索智能提示</a></li>
 						<!-- 博客展示 -->
 						<li><a href="user/blogExample"

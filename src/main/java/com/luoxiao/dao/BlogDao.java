@@ -14,6 +14,8 @@ public interface BlogDao {
 	//提交博客
 	void insertBlog(Blog blog);
 	
+	void deleteById(Integer id);
+	
 	Blog selectById(Integer id);
 	
 	//根据用户ID获取博客列表
