@@ -179,6 +179,11 @@ public class MainController {
 	public String toAddBlog() {
 		return "user/blog_add";
 	}
+	
+	@RequestMapping(value = "/cms/index")
+	public String cmsIndex() {
+		return "cms/index";
+	}
 
 	/**
 	 * 角色管理界面

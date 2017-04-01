@@ -19,6 +19,9 @@
 	src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
+.table{
+	margin-top :100px;
+}
 .table th, .table td {
 	text-align: center;
 	vertical-align: middle !important;
@@ -39,7 +42,7 @@
 		<input type="hidden" id="_method" name="_method" />
 	</form>
 	<!-- 导航栏 -->
-	<nav class="navbar navbar-inverse" role="navigation">
+<%-- 	<nav class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">我的博客</a>
@@ -56,7 +59,7 @@
 			</ul>
 		</div>
 	</div>
-	</nav>
+	</nav> --%>
 	<!-- 导航栏结束 -->
 	<div class="container">
 		<div class="row">

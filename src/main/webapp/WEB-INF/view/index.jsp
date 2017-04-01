@@ -61,6 +61,7 @@ body {
 								<!-- 进入搜索页面 -->
 							</c:if>
 						<li><a href="search" class="glyphicon glyphicon-search">搜索智能提示</a></li>
+						<li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-search">cmsIndex</a></li>
 						<!-- 博客展示 -->
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
