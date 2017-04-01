@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <html>
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,9 +24,9 @@
 			<span class="header-logo">后台管理</span> 
 			<a class="header-menu-btn" href="javascript:;"><i class="icon-font">&#xe600;</i></a>
 			<ul class="header-bar">
-				<li class="header-bar-role"><a href="javascript:;">超级管理员</a></li>
+				<li class="header-bar-role"><a href="javascript:;"></a></li>
 				<li class="header-bar-nav">
-					<a href="javascript:;">admin<i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
+					<a href="javascript:;"><shiro:principal/><i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
 					<ul class="header-dropdown-menu">
 						<li><a href="javascript:;">个人信息</a></li>
 						<li><a href="javascript:;">切换账户</a></li>
