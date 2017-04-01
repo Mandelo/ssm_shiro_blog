@@ -61,9 +61,11 @@ body {
 								<!-- 进入搜索页面 -->
 							</c:if>
 						<li><a href="search" class="glyphicon glyphicon-search">搜索智能提示</a></li>
+						<li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-search">easyUI test</a></li>
 						<!-- 博客展示 -->
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
+							<!--天气预报 -->
 						<li><a href="#" style="margin-top: 2px;" id="w"></a></li>
 						<c:if test="${sessionScope.loginUser != null }">
 							<li clsss="dropdown"><a href="#"

@@ -27,7 +27,7 @@
 		var username = $("#username").val();
 		var password = $("#password").val();
 		var email = $("#email").val();
-		var reg =  /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 		var birth = $("#birthDate").val();
 		var gender = $('input:radio:checked').val();
 		var okUsername = false;
@@ -35,14 +35,18 @@
 		var okEmail = false;
 		var okBirth = false;
 		if (username == "") {
-			$("#spanUsername").html("<b style='color:red;font-size:15px;margin-top:auto;'>用户名不能为空！</b>");
+			$("#spanUsername")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>用户名不能为空！</b>");
 		} else {
 			if (validateUsername() == "false") {
 				okUsername = true;
 			}
 		}
 		if (password == "") {
-			$("#spanPassword").html("<b style='color:red;font-size:15px;margin-top:auto;'>密码不能为空！</b>");
+			$("#spanPassword")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>密码不能为空！</b>");
 		} else {
 			$("#spanPassword")
 					.html(
@@ -50,23 +54,30 @@
 			okPassword = true;
 		}
 		if (email == "") {
-			$("#spanEmail").html("<b style='color:red;font-size:15px;margin-top:auto;'>email不能为空！</b>");
+			$("#spanEmail")
+					.html(
+							"<b style='color:red;font-size:15px;margin-top:auto;'>email不能为空！</b>");
 		} else {
-			if(reg.test(email)){
-				
-			$("#spanEmail").html(
-							"<div class='glyphicon glyphicon-ok' style='float:left'></div>");
-			okEmail = true;
-			}else{
-				$("#spanEmail").html("<b style='color:red;font-size:15px;margin-top:auto;'>email格式错误！</b>");
+			if (reg.test(email)) {
+
+				$("#spanEmail")
+						.html(
+								"<div class='glyphicon glyphicon-ok' style='float:left'></div>");
+				okEmail = true;
+			} else {
+				$("#spanEmail")
+						.html(
+								"<b style='color:red;font-size:15px;margin-top:auto;'>email格式错误！</b>");
 			}
 		}
 
 		if (birth == "") {
-			$("#spanBirth").html(
+			$("#spanBirth")
+					.html(
 							"<b style='color:red;font-size:15px;margin-top:auto;'>年月不能为空！</b>");
 		} else {
-			$("#spanBirth").html(
+			$("#spanBirth")
+					.html(
 							"<div class='glyphicon glyphicon-ok' style='float:left'></div>");
 			okBirth = true;
 		}
@@ -78,7 +89,8 @@
 	/* 检查用户名是否可用 */
 	function validateUsername() {
 		var result;
-		$.ajax({
+		$
+				.ajax({
 					type : "GET",
 					url : "${pageContext.request.contextPath }/user/checkUser?username="
 							+ (username.value)
@@ -104,9 +116,9 @@
 	}
 </script>
 <body>
-<div id = "top">
-	<a href="${pageContext.request.contextPath }/index">&lt;&lt;返回首页</a>
-</div>
+	<div id="top">
+		<a href="${pageContext.request.contextPath }/index">&lt;&lt;返回首页</a>
+	</div>
 	<div class="container-fluid full">
 		<form action="${pageContext.request.contextPath }/user/regist"
 			class="form-horizontal" role="form" method="post" id="form1">

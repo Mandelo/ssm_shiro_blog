@@ -38,6 +38,10 @@ import com.luoxiao.service.UserService;
  * @date 2017年1月14日
  */
 
+/**
+ * @author luoxiao
+ * @date 2017年4月2日
+ */
 @Controller
 public class MainController {
 
@@ -219,6 +223,11 @@ public class MainController {
 	public String blogContent() {
 		return "user/blogExample";
 	}
+	
+	@RequestMapping(value = "cms/index")
+	public String cmsIndex() {
+		return "cms/index";
+	}
 
 	/**
 	 * 用户角色管理
@@ -383,5 +392,7 @@ public class MainController {
 		PageHelper.startPage(page, rows);
 		return list;
 	}
+	
+	
 
 }
