@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+.full {
+		background:url('../pics/register.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+}
+
+body #top{
+	height:40px;
+	background-color: #000;
+	font-size:20px;
+	padding:5px;
+}
+
+body #top a{
+	color:#fff;
+}
+
+.navbar-fixed-bottom {
+	min-height: 10px;
+}
+
+.text-center {
+	margin: 5px auto;
+}
+
+#username{
+	width:250px;
+}
+
+#password{
+	width:250px;
+}
+
+#email{
+	width:250px;
+}
+
+#birthDate{
+	width:250px;
+}
+*[role="navigation"] {
+	background-color: #ffcc99;
+	height: 15;
+}
+
+*[role="form"] {
+	max-width: 620px;
+	min-width: auto;
+	padding: 15px;
+	margin: 170px auto;
+	background-color: #fff;
+	border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+	margin-left: 5em;
+	margin-bottom: 1em;
+}

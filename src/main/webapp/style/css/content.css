@@ -1,0 +1,198 @@
+body,
+
+#full{
+    background-image: url("../pics/content_bg.png");
+    margin: 0 auto;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    background-color:#CEE4EE;
+}
+
+#wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#header{
+    background-image: url("../pics/header.png");
+    padding: 15px 10px;
+}
+
+#nav{
+    height: 50px;
+    background-color: inherit;
+
+}
+
+#header h1{
+    color:#ededed;
+    margin: 0;
+    padding:5px 10px;
+}
+
+#sidebar1 {
+    height: 400px;
+    float:left;
+    width:250px;
+    padding:15px;
+    background:#DCEFF6;
+}
+
+#sidebar1 h2{
+    text-align: center;
+}
+
+#sidebar1{
+    margin: 0 auto;
+}
+
+#sidebar1 h4{
+    margin: 5px auto;
+    text-align: center;
+}
+
+#sidebar1 #image{
+    text-align: center;
+}
+
+#sidebar1 img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+}
+
+#sidebar1 ul{
+    margin-top: auto;
+}
+
+#sidebar1 li{
+    float: left;
+    display: inline;
+    width: 20%;
+    margin-left: 10px;
+}
+
+#sidebar1 p{
+    text-align: center;
+}
+
+#motto{
+    float: left;
+}
+
+#motto p{
+    padding-top: 15px;
+    text-align: left;
+}
+#dashed{
+    width: 100%;
+    display: inline;
+    border-bottom:1px dashed;
+    float: left;
+}
+
+#sidebar3{
+    height: 120px;
+    float: left;
+    padding:10px;
+    background:#DCEFF6;
+    margin-top: 20px;
+    width: 250px;
+}
+
+#sidebar3 h2{
+    text-align: center;
+}
+
+#footer {
+    clear:both;
+    padding:5px 10px;
+    background:#DCEFF6;
+}
+
+#footer p {
+    text-align: center;
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+#main {
+    float:right;
+    width:680px;
+    padding:20px;
+    min-height: 800px;
+    background-color: #DCEFF6;
+}
+
+* html #footer {
+    height:1px;
+}
+
+#nav ul {
+    margin:0;
+    padding:10px;
+    list-style:none;
+}
+#nav li {
+    display: inline;
+    margin:0;
+    padding:5px;
+    font-size: 20px;
+}
+
+h2 {
+    margin:0 0 1em;
+}
+/*日历开始*/
+.Calendar {
+    height: 220px;
+    float: left;
+    padding:15px;
+    background:#DCEFF6;
+    margin-top: 20px;
+    width: 250px;
+    font-size:12px;
+    text-align:center;
+    line-height:2em;
+}
+
+.Calendar table{
+    width:100%;
+    border:0;
+}
+
+.Calendar table thead{color:#acacac;}
+
+.Calendar table td {
+    font-size: 11px;
+    padding:1px;
+}
+#idCalendarPre{
+    cursor:pointer;
+    float:left;
+    padding-right:5px;
+}
+#idCalendarNext{
+    cursor:pointer;
+    float:right;
+    padding-right:5px;
+}
+#idCalendar td.onToday {
+    font-weight:bold;
+    background-color: #00A1CB;
+}
+#idCalendar td.onSelect {
+    font-weight:bold;
+}
+
+td:hover{
+    background-color:#999999;
+}
+/*日历结束*/
