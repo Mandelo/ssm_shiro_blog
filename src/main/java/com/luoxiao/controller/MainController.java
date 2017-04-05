@@ -106,6 +106,15 @@ public class MainController {
 	public String registPage(Model model) {
 		return "user/register";
 	}
+	
+	/**
+	 * 后台首页
+	 * @return
+	 */
+	@RequestMapping(value = "/cms/cmsHome", method = RequestMethod.GET)
+	public String cmsHome() {
+		return "cms/cmsHome";
+	}
 
 	/**
 	 * 登录功能

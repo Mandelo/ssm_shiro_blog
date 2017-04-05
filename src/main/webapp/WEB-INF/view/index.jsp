@@ -61,7 +61,6 @@ body {
 								<!-- 进入搜索页面 -->
 							</c:if>
 						<li><a href="search" class="glyphicon glyphicon-search">搜索智能提示</a></li>
-						<li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-search">cmsIndex</a></li>
 						<!-- 博客展示 -->
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
@@ -77,6 +76,7 @@ body {
 										</shiro:hasRole> <a href="#" class="glyphicon glyphicon-th"> 角色-权限管理</a></li>
 								</ul></li>
 						</c:if>
+						<li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-th-large">后台管理</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:if test="${loginUser != null }">

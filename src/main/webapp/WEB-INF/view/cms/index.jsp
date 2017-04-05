@@ -57,13 +57,13 @@
 				<button class="tab-btn btn-left"><i class="icon-font">&#xe60e;</i></button>
                 <nav class="tab-nav">
                     <div class="tab-nav-content">
-                        <a href="javascript:;" class="content-tab active" data-id="home.html">首页</a>
+                        <a href="javascript:;" class="content-tab active" data-id="index">首页</a>
                     </div>
                 </nav>
                 <button class="tab-btn btn-right"><i class="icon-font">&#xe60f;</i></button>
 			</div>
 			<div class="layout-main-body">
-				<iframe class="body-iframe" name="iframe0" width="100%" height="99%" src="home.html" frameborder="0" data-id="home.html" seamless></iframe>
+				<iframe class="body-iframe" name="iframe0" width="100%" height="99%" src="cmsHome" frameborder="0" data-id="home.html" seamless></iframe>
 			</div>
 		</section>
 		<div class="layout-footer">@2017 luoxiao's blog</div>
