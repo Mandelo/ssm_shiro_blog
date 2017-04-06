@@ -36,26 +36,6 @@ table td {
 </style>
 </head>
 <body>
-	<!-- 导航栏 -->
-	<nav class="navbar navbar-inverse" role="navigation">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand">我的博客</a>
-		</div>
-		<div>
-			<ul class="nav navbar-nav">
-				<li><a href="${pageContext.request.contextPath }/index">&lt;&lt;返回首页</a></li>
-				<!-- <li><a href="#">SVN</a></li> -->
-			</ul>
-			<!--向右对齐-->
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"> 当前用户： [<shiro:principal />]
-				</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
-	<!-- 导航栏结束 -->
 	<div class="container">
 		<form action="updateUserRole" method="POST">
 			<table>

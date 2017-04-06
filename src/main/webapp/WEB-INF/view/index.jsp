@@ -65,18 +65,7 @@ body {
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
 						<li><a href="#" style="margin-top: 2px;" id="w"></a></li>
-						<c:if test="${sessionScope.loginUser != null }">
-							<li clsss="dropdown"><a href="#"
-								class="dropdown-toggle glyphicon glyphicon-asterisk"
-								data-toggle="dropdown">权限演示<strong class="caret"></strong></a>
-								<ul class="dropdown-menu">
-									<li><shiro:hasRole name="admin">
-											<a href="cms/userManage" class="glyphicon glyphicon-user">
-												用户-角色管理</a>
-										</shiro:hasRole> <a href="#" class="glyphicon glyphicon-th"> 角色-权限管理</a></li>
-								</ul></li>
-						</c:if>
-						<li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-th-large">后台管理</a></li>
+						<shiro:hasRole name="admin"><li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-th-large">后台管理</a></li></shiro:hasRole>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:if test="${loginUser != null }">
