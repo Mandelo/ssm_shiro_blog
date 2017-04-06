@@ -65,7 +65,7 @@ body {
 						<li><a href="user/blogExample"
 							class="glyphicon glyphicon-file">博客展示</a></li>
 						<li><a href="#" style="margin-top: 2px;" id="w"></a></li>
-						<shiro:hasRole name="admin"><li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-th-large">后台管理</a></li></shiro:hasRole>
+						
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:if test="${loginUser != null }">
@@ -75,6 +75,7 @@ body {
 								<ul class="dropdown-menu">
 									<li><a href="user/logOut"
 										class="glyphicon glyphicon-inbox"> 退出帐号</a></li>
+										<shiro:hasRole name="admin"><li><a href="${pageContext.request.contextPath }/cms/index" class="glyphicon glyphicon-th-large"> 后台管理</a></li></shiro:hasRole>
 								</ul></li>
 						</c:if>
 						<li><a href="#">关于 </a></li>

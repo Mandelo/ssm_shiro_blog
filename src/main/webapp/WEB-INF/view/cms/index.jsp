@@ -25,7 +25,7 @@
 			<a class="header-menu-btn" href="javascript:;"><i class="icon-font">&#xe600;</i></a>
 			<ul class="header-bar">
 				<li class="header-bar-role"><a href="javascript:;"></a></li>
-						<li><a href="javascript:;">返回博客</a></li>
+						<li><a href="${pageContext.request.contextPath }/index">返回博客</a></li>
 				<li class="header-bar-nav">
 					<a href="javascript:;"><shiro:principal/><i class="icon-font" style="margin-left:5px;">&#xe60c;</i></a>
 					<ul class="header-dropdown-menu">
