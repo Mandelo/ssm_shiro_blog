@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	CMS HOME
+	<h2>后台管理首页</h2>
 </body>
 </html>
