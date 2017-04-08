@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title> 后台管理</title>
 </head>
 <body>
 	<h2>后台管理首页</h2>
