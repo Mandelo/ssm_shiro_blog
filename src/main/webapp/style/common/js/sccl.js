@@ -397,7 +397,7 @@ $(function(){
 	var menu = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","childMenus":[
 					{"id":"3","name":"用户管理","parentId":"1","url":"","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
 						{"id":"4","name":"用户-角色管理","parentId":"3","url":"userManage","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"5","name":"角色-权限管理","parentId":"3","url":"test2.html","icon":"","order":"1","isHeader":"0","childMenus":""}
+						{"id":"5","name":"角色-权限管理","parentId":"3","url":"permissionManage","icon":"","order":"1","isHeader":"0","childMenus":""}
 					]},
 					{"id":"6","name":"博客管理","parentId":"1","url":"","icon":"&#xe602;","order":"1","isHeader":"0","childMenus":[
 						{"id":"7","name":"博客管理1","parentId":"6","url":"home3.html","icon":"","order":"1","isHeader":"0","childMenus":""},

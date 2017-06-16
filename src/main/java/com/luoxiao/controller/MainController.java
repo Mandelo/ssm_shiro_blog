@@ -271,7 +271,7 @@ public class MainController {
 		/* System.out.println(roleStr); */
 		// 根据用户userId删除所有RoleId
 		userRoleService.deleteById(userId);
-		// 遍历角色名数组
+		// 遍历角色名
 		String[] roleNames = roleStr.split(",");
 		for (int i = 0; i < roleNames.length; i++) {
 			Integer roleId = (roleService.getIdByRoleName(roleNames[i]));
