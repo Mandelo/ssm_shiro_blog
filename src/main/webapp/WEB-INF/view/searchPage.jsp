@@ -53,9 +53,9 @@
 
             </div>
             <div class="search" style="width: 100%;height: 150px;">
-                <input style="width: 80%;height: 30px;float: left;padding-left: 5px;" type="text" id="keyword" placeholder="请输入关键字,如'java'">
+                <input style="width: 80%;height: 30px;float: left;padding-left: 5px;outline:none" type="text" id="keyword" placeholder="请输入关键字,如'java'">
                 <button style="width: 20%;height: 30px;float: left;cursor: default">search</button>
-                <div class="suggest-search" id="suggest-search" style="width: 318px;height:auto;float: left;border: 1px solid #9F9F9F;background-color: #FFFFFF">
+                <div class="suggest-search" id="suggest-search" style="width: 320px;height:auto;float: left;border: 1px solid #9F9F9F;background-color: #FFFFFF">
                     <ul>
                     </ul>
                 </div>
