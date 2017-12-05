@@ -311,7 +311,7 @@ public class MainController {
 	 */
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String search() {
-		return "/search";
+		return "/searchPage";
 	}
 
 	// 提交博客

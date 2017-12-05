@@ -54,6 +54,7 @@
 										if (size >= 5) {
 											size = 5;
 										}
+										console.log(data);
 										for (var i = 0; i < size; i++) {
 											if (data != "") {
 												var nextNode = data[i]['title']
