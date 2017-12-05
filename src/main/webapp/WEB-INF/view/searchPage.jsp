@@ -45,7 +45,7 @@
 </style>
 <body>
     <div class="top-wrap" style="width: 100%;height: 30px;">
-        <a href="index" class="btn btn-primary" role="button">返回</a>
+        <a href="index" class="btn btn-primary btn-sm" role="button">返回首页</a>
     </div>
     <div class="center-wrap" style="width: 100%;height: 200px;margin-top: 100px;">
         <div class="center" style="width: 400px;;margin-left: 35%;height: 200px;">
@@ -109,7 +109,6 @@
                 })
             }
         })
-
     })
 
     function search(){
