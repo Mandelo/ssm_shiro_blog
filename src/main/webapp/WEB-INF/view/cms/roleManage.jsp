@@ -75,6 +75,7 @@ table td {
 			</table>
 		</form>
 	</div>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var url = location.search;
