@@ -1,15 +1,13 @@
 package com.luoxiao.service.impl;
 
-import java.util.List;
-
+import com.luoxiao.dao.BlogDao;
+import com.luoxiao.model.Blog;
+import com.luoxiao.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.luoxiao.dao.BlogDao;
-import com.luoxiao.model.Blog;
-import com.luoxiao.service.BlogService;
-import com.luoxiao.service.UserService;
+import java.util.List;
 
 @Service
 public class BlogServiceImpl implements BlogService{
@@ -44,8 +42,9 @@ public class BlogServiceImpl implements BlogService{
 		blogDao.deleteById(id);
 		
 	}
-	
-	
-	
-	
+
+	@Override
+	public List<Blog> selectAllBlog(Integer page, Integer rows) {
+		return blogDao.selectAllBlog(page,rows);
+	}
 }

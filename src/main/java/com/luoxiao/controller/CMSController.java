@@ -26,6 +26,9 @@ public class CMSController {
 		return "cms/permissionManage";
 	}
 
-	//public ModelAndView 
+	@RequestMapping("cms/userList")
+	public String userList(){
+		return "cms/userList";
+	}
 	
 }

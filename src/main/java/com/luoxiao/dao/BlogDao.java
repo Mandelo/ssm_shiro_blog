@@ -23,4 +23,7 @@ public interface BlogDao {
 	
 	//搜索博客
 	List<Blog> selectByKeyword(@Param("keyword")String keyword,@Param("page")int page,@Param("rows")int rows);
+
+	//所有博客
+	List<Blog> selectAllBlog(@Param("page")int page,@Param("rows")int rows);
 }

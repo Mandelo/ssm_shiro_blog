@@ -47,6 +47,11 @@
 		)
 	</insert>
 
+	<select id="selectAllBlog" resultMap="BaseResultMap">
+		SELECT *
+		FROM blog
+	</select>
+
 	<select id="selectAllByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select *
 		from blog

@@ -16,4 +16,7 @@ public interface BlogService {
 	
 	//搜索
 	List<Blog> selectByKeyword(String keyword,Integer page,Integer rows);
+
+	//得到所有博客
+	List<Blog> selectAllBlog(Integer page,Integer rows);
 }
