@@ -16,7 +16,31 @@ public class User {
 
 	private String gender;
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", password='" + password + '\'' +
+				", birth=" + birth +
+				", gender='" + gender + '\'' +
+				", email='" + email + '\'' +
+				", status='" + status + '\'' +
+				'}';
+	}
+
 	private String email;
+
+	//状态码 0:禁用,1:正常
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public Integer getId() {
 		return id;
@@ -64,13 +88,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", birth=" + birth + ", gender=" + gender
-				+ ", email=" + email + "]";
 	}
 
 }
