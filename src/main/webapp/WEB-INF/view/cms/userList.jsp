@@ -10,22 +10,36 @@
 <head>
     <title>userList</title>
 </head>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/userList.css">
-<link rel="stylesheet"  href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
+<%--<link rel="stylesheet" href="${pageContext.request.contextPath }/style/bootstrap-table/bootstrap-table.min.css">--%>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/style/datetimepicker/css/bootstrap-datetimepicker.min.css">
-<script src="${pageContext.request.contextPath}/style/js/jquery-1.9.0.min.js"></script>
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath }/style/datetimepicker/css/bootstrap-datetimepicker.min.css">
+
+<%--<script src="${pageContext.request.contextPath }/style/bootstrap-table/bootstrap-table.min.js"></script>--%>
+<!-- Latest compiled and minified CSS -->
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="${pageContext.request.contextPath}/style/js/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+
 <script src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/style/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-<script src="${pageContext.request.contextPath}/style/datetimepicker/js/locales/bootstrap-datetimepicker.ru.js" charset="UTF-8"></script>
-<script src="${pageContext.request.contextPath}/style/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="${pageContext.request.contextPath}/style/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
 <script>
+
     $(function () {
         $("#date1").datetimepicker({
-            format: 'yyyy-MM-dd',
+            format: 'yyyy-mm-dd',
             language: 'zh-CN',
             weekStart: 1,
-            todayBtn:  1,
+            todayBtn: 1,
             autoclose: 1,
             todayHighlight: 1,
             startView: 2,
@@ -37,26 +51,51 @@
 </script>
 <body>
 <div class="search-wrap">
-   <div class="row">
-       <div class="col-md-2"></div>
-       <div class="col-md-2">
-           <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入用户名">
-       </div>
-       <div class="col-md-2">
-           <div class="form-group">
-               <div class='input-group date' id='date1'>
-                   <input type='text' class="form-control" />
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2"><p class="search-title">用户查询</p></div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入用户名">
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class='input-group date' id='date1'>
+                    <input type='text' class="form-control"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-               </div>
-           </div>
-       </div>
-       <div class="col-md-2"></div>
-       <div class="col-md-2"></div>
-       <div class="col-md-2"></div>
-   </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary">查找</button>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 </div>
+<%--user list--%>
+<div class="result-wrap">
+    <div class="row">
+        <div class="col-md-1">
 
+        </div>
+        <div class="col-md-10">
+            <table id="table" data-toggle="table">
+                <thead>
+                <tr>
+                    <th data-field="name">姓名</th>
+                    <th data-field="age">年龄</th>
+                    <th data-field="height">身高</th>
+                    <th data-field="description">描述</th>
+                    <th class="text-left" data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+</div>
 </body>
 </html>

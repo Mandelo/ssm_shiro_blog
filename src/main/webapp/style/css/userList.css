@@ -6,15 +6,20 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fo
 
 .search-wrap{
     width: 98%;
-    height: 50px;
+    height: 40px;
     margin-left: 1%;
-    background-color: #00A1CB;
+    padding-top: 5px;
+   /* background-color: #00A1CB;*/
 }
-/*
 
-.search-wrap .sw-l{
-    width: 20%;
-    float: left;
-    display: inline-block;
-    width: 100px;
-}*/
+.search-title{
+    font-size: 20px;
+}
+
+.result-wrap{
+    height: 400px;
+    margin-left: 1%;
+    padding-top: 5px;
+    width: 98%;
+    background-color: #62c2e4;
+}
