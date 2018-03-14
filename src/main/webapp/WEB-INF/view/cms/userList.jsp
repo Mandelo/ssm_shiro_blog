@@ -48,7 +48,35 @@
         })
     });
 
+    $(document).ready(function(){
+        $('#table1').bootstrapTable({
+            columns: [
+                {
+                    field: 'id',
+                    title: 'ID'
+                },
+                {
+                field: 'username',
+                title: '用户名'
+            }, {
+                field: 'gender',
+                title: '性别'
+            }, {
+                field: 'regTime',
+                title: '注册时间'
+            },{
+                field: 'status',
+                title: '状态'
+            }
+              ,{
+                    field: 'option',
+                    title: '操作'
+                }
+            ]
+        });
+    })
 </script>
+
 <body>
 <div class="search-wrap">
     <div class="row">
@@ -80,17 +108,8 @@
 
         </div>
         <div class="col-md-10">
-            <table id="table" data-toggle="table">
-                <thead>
-                <tr>
-                    <th data-field="name">姓名</th>
-                    <th data-field="age">年龄</th>
-                    <th data-field="height">身高</th>
-                    <th data-field="description">描述</th>
-                    <th class="text-left" data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>
-                </tr>
-                </thead>
-            </table>
+            <table id="table1"
+                   data-classes="table table-hover table-condensed"></table>
         </div>
         <div class="col-md-1">
 
