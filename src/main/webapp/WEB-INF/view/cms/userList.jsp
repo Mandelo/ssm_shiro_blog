@@ -11,10 +11,10 @@
     <title>userList</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/userList.css">
 <%--<link rel="stylesheet" href="${pageContext.request.contextPath }/style/bootstrap-table/bootstrap-table.min.css">--%>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
 <link rel="stylesheet"
       href="${pageContext.request.contextPath }/style/datetimepicker/css/bootstrap-datetimepicker.min.css">
 
@@ -23,12 +23,9 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="${pageContext.request.contextPath}/style/js/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
-
-<!-- Latest compiled and minified Locales -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
-
 <script src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/style/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="${pageContext.request.contextPath }/style/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 <script src="${pageContext.request.contextPath}/style/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/style/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"
         charset="UTF-8"></script>
@@ -48,31 +45,46 @@
         })
     });
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#table1').bootstrapTable({
+            method:"get",
             columns: [
                 {
                     field: 'id',
                     title: 'ID'
                 },
                 {
-                field: 'username',
-                title: '用户名'
-            }, {
-                field: 'gender',
-                title: '性别'
-            }, {
-                field: 'regTime',
-                title: '注册时间'
-            },{
-                field: 'status',
-                title: '状态'
-            }
-              ,{
+                    field: 'username',
+                    title: '用户名'
+                },
+                {
+                    field: 'gender',
+                    title: '性别'
+                },
+                {
+                    field: 'birth',
+                    title: '出生日期'
+                },
+                {
+                    field: 'regTime',
+                    title: '注册时间'
+                },
+                {
+                    field: 'status',
+                    title: '状态'
+                },
+                {
                     field: 'option',
                     title: '操作'
                 }
-            ]
+            ],
+            url: '${pageContext.request.contextPath }/cms/AllUser',
+            onLoadSuccess: function(){  //加载成功时执行
+                console.info("加载成功");
+            },
+            onLoadError: function(){  //加载失败时执行
+                console.info("加载数据失败");
+            }
         });
     })
 </script>
@@ -108,8 +120,7 @@
 
         </div>
         <div class="col-md-10">
-            <table id="table1"
-                   data-classes="table table-hover table-condensed"></table>
+            <table id="table1"></table>
         </div>
         <div class="col-md-1">
 
