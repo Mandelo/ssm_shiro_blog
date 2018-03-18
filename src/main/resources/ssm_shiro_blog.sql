@@ -1,6 +1,6 @@
 /*
-SQLyog Professional v12.09 (64 bit)
-MySQL - 5.6.26-log : Database - ssm
+SQLyog 企业版 - MySQL GUI v8.14 
+MySQL - 5.7.16-log : Database - ssm
 *********************************************************************
 */
 
@@ -88,13 +88,15 @@ CREATE TABLE `user` (
   `birth` date DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL,
   `email` varchar(40) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  `regTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`username`,`password`,`birth`,`gender`,`email`) values (1,'admin','123','2016-12-26','male','34343@qw.com'),(2,'123','123','2017-03-21','male','2132@123'),(3,'123232','123','2017-03-06','male','trytyt@wqew');
+insert  into `user`(`id`,`username`,`password`,`birth`,`gender`,`email`,`status`,`regTime`) values (1,'admin','123','2016-12-26','male','34343@qw.com','1','2017-03-18 12:53:39'),(2,'123','123','2017-03-21','male','2132@123','1','2014-03-18 22:53:39'),(3,'123232','123','2017-03-06','male','trytyt@wqew','1','2011-03-18 22:53:39'),(4,'admin稳','123','2018-03-08','Female','1232132@123.com','1','2018-03-18 22:53:39'),(5,'admin23r','123','2018-03-23','Female','232434@123.com','1','2018-03-18 22:53:39'),(6,'admin23324','123','2018-03-02','Female','1232132@123.com','1','2018-03-18 22:53:39');
 
 /*Table structure for table `user_role` */
 
@@ -105,11 +107,11 @@ CREATE TABLE `user_role` (
   `user_id` int(20) DEFAULT NULL,
   `role_id` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=232 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user_role` */
 
-insert  into `user_role`(`id`,`user_id`,`role_id`) values (198,1,1),(199,1,2),(200,1,3),(223,3,4),(224,3,5),(225,3,6),(226,3,7),(227,3,8),(228,3,9),(229,2,3),(230,2,4),(231,2,5);
+insert  into `user_role`(`id`,`user_id`,`role_id`) values (198,1,1),(199,1,2),(200,1,3),(223,3,4),(224,3,5),(225,3,6),(226,3,7),(227,3,8),(228,3,9),(237,2,2),(238,2,3),(239,2,4),(240,2,5),(241,4,3),(242,5,3),(243,6,3);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
