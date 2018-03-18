@@ -79,6 +79,8 @@ public class MainController {
 	public ModelAndView save(User user) {
 		ModelAndView mv = new ModelAndView();
 		try {
+			user.setStatus("1");
+			user.setRegTime(new Date());
 			userService.save(user);
 			Integer id = user.getId();
 			System.out.println(id);

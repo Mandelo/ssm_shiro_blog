@@ -1,143 +1,152 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.luoxiao.dao.UserDao">
-	<resultMap type="com.luoxiao.model.User" id="BaseResultMap">
-		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="username" property="username" jdbcType="VARCHAR" />
-		<result column="password" property="password" jdbcType="VARCHAR" />
-		<result column="birth" property="birth" jdbcType="DATE" />
-		<result column="status" property="status" jdbcType="VARCHAR" />
-		<result column="gender" property="gender" jdbcType="VARCHAR" />
-		<result column="email" property="email" jdbcType="VARCHAR" />
-	</resultMap>
+    <resultMap type="com.luoxiao.model.User" id="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="birth" property="birth" jdbcType="DATE"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="regTime" property="regTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
 
-	<sql id="Base_Column_List">
-		id, username, password, birth,gender,email
+    <sql id="Base_Column_List">
+		id, username, password, birth,gender,email,status,regTime
 	</sql>
 
-	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		from user
-		where id = #{id,jdbcType=INTEGER}
-	</select>
-	
-	<select id = "selectAll" resultMap = "BaseResultMap">
-		select 
-		<include refid="Base_Column_List" />
-		from user
-	</select>
-	
-	<select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
-		select
-		<include refid="Base_Column_List" />
-		from user
-		where username = #{username,jdbcType=VARCHAR}
-	</select>
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
 
-	<delete id="deleteById" parameterType="java.lang.Integer">
-		<!-- DELETE user,user_role FROM user LEFT JOIN user_role ON user.id = user_role.user_id WHERE user.id= #{id,jdbcType = INTEGER} -->	
-		DELETE from user where id = #{id,jdbcType = INTEGER}
-	</delete>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+    </select>
 
-	<insert id="insert" parameterType="com.luoxiao.model.User">
-		<selectKey resultType="java.lang.Integer" keyProperty="id"
-			order="AFTER">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
-		insert into user
-			<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="username != null">
-				username,
-			</if>
-			<if test="password != null">
-				password,
-			</if>
-			<if test="email != null">
-				email,
-			</if>
-			<if test="birth != null">
-				birth,
-			</if>
-			<if test="gender != null">
-				gender
-			</if>
-		</trim>
-		values
-		(
-		 #{username,jdbcType=VARCHAR},
-		 #{password,jdbcType=VARCHAR},
-		 #{email,jdbcType=VARCHAR},
-		 #{birth,jdbcType=DATE},
-		 #{gender,jdbcType=VARCHAR}
-		)
-	</insert>
+    <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
 
-	<insert id="insertSelective" parameterType="com.luoxiao.model.User">
-		<selectKey resultType="java.lang.Integer" keyProperty="id"
-			order="AFTER">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
-		insert into user
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="username != null">
-				username,
-			</if>
-			<if test="password != null">
-				password,
-			</if>
-			<if test="birth != null">
-				birth,
-			</if>
-			<if test="gender != null">
-				gender,
-			</if>
-			<if test="email != null">
-				email,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="username != null">
-				#{username,jdbcType=VARCHAR},
-			</if>
-			<if test="password != null">
-				#{password,jdbcType=VARCHAR},
-			</if>
-			<if test="birth != null">
-				#{age,jdbcType=DATE},
-			</if>
-			<if test="gender != null">
-				#{age,jdbcType=VARCHAR},
-			</if>
-			<if test="age != null">
-				#{email,jdbcType=VARCHAR},
-			</if>
-		</trim>
-	</insert>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        <!-- DELETE user,user_role FROM user LEFT JOIN user_role ON user.id = user_role.user_id WHERE user.id= #{id,jdbcType = INTEGER} -->
+        DELETE from user where id = #{id,jdbcType = INTEGER}
+    </delete>
 
-		<update id="updateByIdSelective" parameterType="com.luoxiao.model.User">
-		update user
-		<set>
-			<if test="username != null">
-				#{username,jdbcType=VARCHAR},
-			</if>
-			<if test="password != null">
-				#{password,jdbcType=VARCHAR},
-			</if>
-			<if test="birth != null">
-				#{age,jdbcType=DATE},
-			</if>
-			<if test="gender != null">
-				#{age,jdbcType=VARCHAR},
-			</if>
-			<if test="age != null">
-				#{email,jdbcType=VARCHAR},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
+    <insert id="insert" parameterType="com.luoxiao.model.User">
+        <selectKey resultType="java.lang.Integer" keyProperty="id"
+                   order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="birth != null">
+                birth,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="regTime != null">
+                regTime
+            </if>
+        </trim>
+        values
+        (
+        #{username,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{birth,jdbcType=DATE},
+        #{gender,jdbcType=VARCHAR},
+        #{status,jdbcType=VARCHAR},
+        #{regTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
 
-	<update id="updateByPrimaryKey" parameterType="com.luoxiao.model.User">
+    <insert id="insertSelective" parameterType="com.luoxiao.model.User">
+        <selectKey resultType="java.lang.Integer" keyProperty="id"
+                   order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="birth != null">
+                birth,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="birth != null">
+                #{age,jdbcType=DATE},
+            </if>
+            <if test="gender != null">
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByIdSelective" parameterType="com.luoxiao.model.User">
+        update user
+        <set>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="birth != null">
+                #{age,jdbcType=DATE},
+            </if>
+            <if test="gender != null">
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.luoxiao.model.User">
 		update user
 		set username = #{username,jdbcType=VARCHAR},
 		password = #{password,jdbcType=VARCHAR},
@@ -145,6 +154,6 @@
 		gender=#{gender,jdbcType=VARCHAR},
 		email=#{email,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
-	</update>	
+	</update>
 
 </mapper>

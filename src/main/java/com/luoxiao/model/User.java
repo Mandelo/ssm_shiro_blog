@@ -16,6 +16,22 @@ public class User {
 
     private String gender;
 
+    public Date getRegTime() {
+        return regTime;
+    }
+
+    public void setRegTime(Date regTime) {
+        this.regTime = regTime;
+    }
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+    private Date regTime;
+
+    private String email;
+
+    //状态码 0:禁用,1:正常
+    private String status;
+
     @Override
     public String toString() {
         return "User{" +
@@ -24,15 +40,11 @@ public class User {
                 ", password='" + password + '\'' +
                 ", birth=" + birth +
                 ", gender='" + gender + '\'' +
+                ", regTime=" + regTime +
                 ", email='" + email + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }
-
-    private String email;
-
-    //状态码 0:禁用,1:正常
-    private String status;
 
     public String getStatus() {
         return status;
