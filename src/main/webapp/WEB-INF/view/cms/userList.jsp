@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户页面(开发中)</title>
+    <title>用户页面(TODO)</title>
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
@@ -56,7 +56,8 @@
                 {
                     field: 'gender',
                     title: '性别',
-                    align: "center"
+                    align: "center",
+                    width: "5%"
                 },
                 {
                     field: 'birth',
@@ -72,23 +73,28 @@
                     align: "center"
                     ,
                     formatter: function (value, row, index) {
-                        return changeDateTimeFormat(value)
+                        return changeDateTimeFormat(value);
                     }
                 },
                 {
                     field: 'status',
                     title: '状态',
-                    align: "center"
+                    align: "center",
+                    width: "5%"
                 },
                 {
                     field: 'option',
                     title: '操作',
-                    align: "center"
+                    width:"15%",
+                    align: "center",
+                    formatter: operateFormatter
                 }
             ],
             pagination: true,
+            pageList: [10, 15],
             search: false,
             showHeader: true,
+            pageNumber: 1,
             url: '${pageContext.request.contextPath }/cms/AllUser',
             onLoadSuccess: function () {  //加载成功时执行
                 console.info("加载成功");
@@ -99,7 +105,7 @@
         });
     })
 
-    //转换日期格式(时间戳转换为datetime格式)
+    //转换时间日期格式(时间戳转换为datetime格式)
     function changeDateTimeFormat(cellval) {
         var dateVal = cellval + "";
         if (cellval != null) {
@@ -115,6 +121,7 @@
         }
     }
 
+    //转换日期格式为年月
     function changeDateFromat(cellval) {
         var dateVal = cellval + "";
         if (cellval != null) {
@@ -125,13 +132,20 @@
         }
     }
 
+    function operateFormatter(value, row, index) {
+        return [
+                '<button type="button" class="btn btn-sm btn-warning">禁用</button>'+'&nbsp;'+
+            '<button type="button" class="btn btn-sm btn-danger">删除</button>'
+        ].join('');
+    }
+
 </script>
 
 <body>
 <div class="search-wrap">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-2"><p class="search-title">用户查询(开发中~~~)</p></div>
+        <div class="col-md-2"><p class="search-title">会员查询(TODO)</p></div>
         <div class="col-md-2">
             <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入用户名">
         </div>
@@ -154,15 +168,11 @@
 <%--user list--%>
 <div class="result-wrap">
     <div class="row">
-        <div class="col-md-1">
 
-        </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
             <table id="table1"></table>
         </div>
-        <div class="col-md-1">
 
-        </div>
     </div>
 </div>
 </body>

@@ -152,13 +152,13 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<label class="radio-inline"> <input name="gender"
-								class="gender" type="radio" id="femaleRadio" value="Female"
+								class="gender" type="radio" id="femaleRadio" value="女"
 								checked=true>女
 							</label>
 						</div>
 						<div class="col-sm-6">
 							<label class="radio-inline"> <input name="gender"
-								class="gender" type="radio" id="maleRadio" value="Male">男
+								class="gender" type="radio" id="maleRadio" value="男">男
 							</label>
 						</div>
 
