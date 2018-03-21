@@ -57,7 +57,7 @@
                     field: 'gender',
                     title: '性别',
                     align: "center",
-                    width: "5%"
+                    width: "8%"
                 },
                 {
                     field: 'birth',
@@ -95,6 +95,7 @@
             search: false,
             showHeader: true,
             pageNumber: 1,
+            striped: true,
             url: '${pageContext.request.contextPath }/cms/AllUser',
             onLoadSuccess: function () {  //加载成功时执行
                 console.info("加载成功");
