@@ -97,7 +97,6 @@
             pageList: [10, 15],
             search: false,
             showHeader: true,
-            showRefresh:true,
             pageNumber: 1,
             striped: true,
             url: '${pageContext.request.contextPath }/cms/AllUser',
