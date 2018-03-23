@@ -136,6 +136,7 @@
         }
     }
 
+    //按钮
     function operateFormatter(value, row, index) {
         return [
                 '<button type="button" class="btn btn-sm btn-warning btn-ban">禁用</button>'+'&nbsp;'+
@@ -143,6 +144,7 @@
         ].join('');
     }
 
+    /*删除操作*/
     window.operateEvents1={
         "click .btn-delete":function(e,value,row,index){
             $.ajax({
@@ -170,6 +172,7 @@
             })
            /* alert("test ban");*/
         },
+        //点击禁用按钮
         "click .btn-ban":function(e,value,row,index){
             alert("test ban");
         }
