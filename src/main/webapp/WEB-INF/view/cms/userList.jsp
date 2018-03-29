@@ -87,10 +87,10 @@
                 {
                     field: 'option',
                     title: '操作',
-                    width:"15%",
+                    width: "15%",
                     align: "center",
                     formatter: operateFormatter,
-                    events:operateEvents1
+                    events: operateEvents1
                 }
             ],
             pagination: true,
@@ -138,46 +138,50 @@
 
     //按钮
     function operateFormatter(value, row, index) {
-        return [
-                '<button type="button" class="btn btn-sm btn-warning btn-ban">禁用</button>'+'&nbsp;'+
-            '<button type="button" class="btn btn-sm btn-danger btn-delete">删除</button>'
-        ].join('');
-    }
-
-    /*删除操作*/
-    window.operateEvents1={
-        "click .btn-delete":function(e,value,row,index){
-            $.ajax({
-                type:"post",
-                url:"${pageContext.request.contextPath}/deleteUser",
-                data:{id:row.id},
-                success:function(data,status){
-                    if(status == "success"){
-                        new PNotify({
-                            title: '删除成功',
-                            text: '您已成功删除名为'+row.username+'的用户!',
-                            type: 'success'
-                        });
-                    }
-                    $("#table1").bootstrapTable('refresh');
-                },
-                error:function(){
-                    new PNotify({
-                        title: '删除成功',
-                        text: '删除失败!',
-                        type: 'success'
-                    });
-                }
-
-            })
-           /* alert("test ban");*/
-        },
-        //点击禁用按钮
-        "click .btn-ban":function(e,value,row,index){
-            alert("test ban");
+        var name = row.username;
+        if (name == "admin") {
+            return [''].join('');
+        } else {
+            return [
+                '<button type="button" class="btn btn-sm btn-warning btn-ban" data-toggle="modal" >禁用</button>' + '&nbsp;' +
+                '<button type="button" class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#myModal1">删除</button>'
+            ].join('');
         }
     }
-
+    /*删除操作*/
+    window.operateEvents1 = {
+        "click .btn-delete": function (e, value, row, index) {
+            $('#cfmMsg').html('确定要删除名为  ' + row.username + '  的用户吗?');
+            $('#myModal1 .confirmDelete').click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "${pageContext.request.contextPath}/deleteUser", /**/
+                    data: {id: row.id},
+                    success: function (data, status) {
+                        if (status == "success") {
+                            new PNotify({
+                                title: '删除成功',
+                                delay: 1500,
+                                text: '您已成功删除名为' + row.username + '的用户!',
+                                text: '删除成功!',
+                                type: 'success'
+                            });
+                        }
+                        $("#table1").bootstrapTable('refresh');
+                    },
+                    error: function () {
+                        new PNotify({
+                            title: '删除成功',
+                            text: '删除失败!',
+                            delay: 1500,
+                            type: 'fail'
+                        });
+                    }
+                })
+                operateFormatter();
+            })
+        }
+    }
 
 </script>
 
@@ -214,6 +218,22 @@
         </div>
 
     </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">删除用户</h4>
+            </div>
+            <div class="modal-body" id="cfmMsg"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelDelete" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger confirmDelete" data-dismiss="modal">确认</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 </body>
 </html>
