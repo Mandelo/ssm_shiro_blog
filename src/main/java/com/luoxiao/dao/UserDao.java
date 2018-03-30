@@ -1,8 +1,8 @@
 package com.luoxiao.dao;
 
-import java.util.List;
-
 import com.luoxiao.model.User;
+
+import java.util.List;
 
 public interface UserDao {
 
@@ -21,4 +21,6 @@ public interface UserDao {
 	int updateByIdSelective(User record);
 	
 	int updateById(User record);
+
+	void banUserById(Integer id);
 }

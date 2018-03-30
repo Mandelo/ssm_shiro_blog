@@ -1,8 +1,8 @@
 package com.luoxiao.service;
 
-import java.util.List;
-
 import com.luoxiao.model.User;
+
+import java.util.List;
 
 /**
  * @author luoxiao
@@ -20,4 +20,6 @@ public interface UserService {
 	boolean userIsExist(String username);
 	
 	void deleteById(Integer id);
+
+	void banUserById(Integer id);
 }

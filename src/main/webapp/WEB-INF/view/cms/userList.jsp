@@ -142,21 +142,29 @@
         if (name == "admin") {
             return [''].join('');
         } else {
-            return [
-                '<button type="button" class="btn btn-sm btn-warning btn-ban" data-toggle="modal" >禁用</button>' + '&nbsp;' +
-                '<button type="button" class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#myModal1">删除</button>'
-            ].join('');
+            if(row.status == 1) {
+                return [
+                    '<button type="button" class="btn btn-sm btn-warning btn-ban">禁用</button>' + '&nbsp;' +
+                    '<button type="button" class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#myModal1">删除</button>'
+                ].join('');
+            }
+            else if(row.status ==0){
+                return [
+                    '<button type="button" class="btn btn-sm btn-default btn-ban" >解禁</button>' + '&nbsp;' +
+                    '<button type="button" class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#myModal1">删除</button>'
+                ].join('');
+            }
         }
     }
     /*删除操作*/
     window.operateEvents1 = {
-        "click .btn-delete": function (e, value, row, index) {
+       "click .btn-delete": function (e, value, row, index) {
             $('#cfmMsg').html('确定要删除名为  ' + row.username + '  的用户吗?');
             $('#myModal1 .confirmDelete').click(function () {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/deleteUser", /**/
-                    data: {id: row.id},
+                    url: "${pageContext.request.contextPath}/deleteUser",
+                    data: {"id": row.id},
                     success: function (data, status) {
                         if (status == "success") {
                             new PNotify({
@@ -180,7 +188,37 @@
                 })
                 operateFormatter();
             })
+        },
+        "click .btn-ban":function(e,value, row, index){
+            var userId = row.id;
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/banUser",
+                data: {"id": userId},
+                success: function (data, status) {
+                    if (status == "success") {
+                        new PNotify({
+                            title: '操作成功成功',
+                            delay: 1500,
+                            text: '您已成功禁用名为' + row.username + '的用户!',
+                            text: '删除成功!',
+                            type: 'success'
+                        });
+                    }
+                    $("#table1").bootstrapTable('refresh');
+                },
+                error: function () {
+                    new PNotify({
+                        title: '删除成功',
+                        text: '删除失败!',
+                        delay: 1500,
+                        type: 'fail'
+                    });
+                }
+            })
+           /* operateFormatter();*/
         }
+
     }
 
 </script>
@@ -191,7 +229,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-2"><p class="search-title">会员查询(TODO)</p></div>
         <div class="col-md-2">
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入用户名">
+            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入用户名.">
         </div>
         <div class="col-md-2">
             <div class="form-group">
@@ -219,7 +257,7 @@
 
     </div>
 </div>
-<!-- 模态框（Modal） -->
+<!-- 删除模态框（Modal） -->
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

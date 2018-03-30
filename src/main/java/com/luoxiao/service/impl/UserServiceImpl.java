@@ -1,13 +1,12 @@
 package com.luoxiao.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.luoxiao.dao.UserDao;
 import com.luoxiao.model.User;
 import com.luoxiao.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -50,6 +49,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void deleteById(Integer id) {
 		userDao.deleteById(id);
+	}
+
+	@Override
+	public void banUserById(Integer id) {
+		userDao.banUserById(id);
 	}
 
 }

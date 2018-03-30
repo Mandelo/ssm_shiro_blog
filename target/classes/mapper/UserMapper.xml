@@ -156,4 +156,12 @@
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 
+    <!--禁用用户-->
+    <update id = "banUserById" parameterType="java.lang.Integer">
+        UPDATE USER
+        SET status = '0'
+        WHERE
+        id = #{id,jdbcType = INTEGER}
+    </update>
+
 </mapper>
