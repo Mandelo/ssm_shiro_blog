@@ -52,8 +52,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void banUserById(Integer id) {
-		userDao.banUserById(id);
+	public void blockUserById(Integer id) {
+		userDao.blockUserById(id);
+	}
+
+	@Override
+	public void unblockUserById(Integer id) {
+		userDao.unblockUserById(id);
 	}
 
 }

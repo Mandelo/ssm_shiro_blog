@@ -305,15 +305,28 @@ public class MainController {
      * 禁用用户
      */
     @ResponseBody
-    @RequestMapping(value = "/banUser")
-    public String banUserById(@RequestParam(value = "id") Integer id) {
+    @RequestMapping(value = "/blockUser")
+    public String blockUserById(@RequestParam(value = "id") Integer id) {
         try {
-            userService.banUserById(id);
+            userService.blockUserById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "";
+    }
 
+    /**
+     * 解禁
+     */
+    @ResponseBody
+    @RequestMapping(value = "/unblockUser")
+    public String unblockUserById(@RequestParam(value = "id") Integer id) {
+        try {
+            userService.unblockUserById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /**

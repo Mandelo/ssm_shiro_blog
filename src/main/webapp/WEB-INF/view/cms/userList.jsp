@@ -144,13 +144,13 @@
         } else {
             if(row.status == 1) {
                 return [
-                    '<button type="button" class="btn btn-sm btn-warning btn-ban">禁用</button>' + '&nbsp;' +
+                    '<button type="button" class="btn btn-sm btn-warning btn-block1">禁用</button>' + '&nbsp;' +
                     '<button type="button" class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#myModal1">删除</button>'
                 ].join('');
             }
             else if(row.status ==0){
                 return [
-                    '<button type="button" class="btn btn-sm btn-default btn-ban" >解禁</button>' + '&nbsp;' +
+                    '<button type="button" class="btn btn-sm btn-default btn-unblock1" >解禁</button>' + '&nbsp;' +
                     '<button type="button" class="btn btn-sm btn-danger btn-delete" data-toggle="modal" data-target="#myModal1">删除</button>'
                 ].join('');
             }
@@ -189,16 +189,16 @@
                 operateFormatter();
             })
         },
-        "click .btn-ban":function(e,value, row, index){
+        "click .btn-block1":function(e,value, row, index){
             var userId = row.id;
             $.ajax({
                 type: "post",
-                url: "${pageContext.request.contextPath}/banUser",
+                url: "${pageContext.request.contextPath}/blockUser",
                 data: {"id": userId},
                 success: function (data, status) {
                     if (status == "success") {
                         new PNotify({
-                            title: '操作成功成功',
+                            title: '操作成功',
                             delay: 1500,
                             text: '您已成功禁用名为' + row.username + '的用户!',
                             text: '删除成功!',
@@ -217,6 +217,35 @@
                 }
             })
            /* operateFormatter();*/
+        },
+        "click .btn-unblock1":function(e,value, row, index){
+            var userId = row.id;
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/unblockUser",
+                data: {"id": userId},
+                success: function (data, status) {
+                    if (status == "success") {
+                        new PNotify({
+                            title: '操作成功',
+                            delay: 1500,
+                            text: '您已成功解禁名为' + row.username + '的用户!',
+                            text: '解禁成功!',
+                            type: 'success'
+                        });
+                    }
+                    $("#table1").bootstrapTable('refresh');
+                },
+                error: function () {
+                    new PNotify({
+                        title: '解禁成功',
+                        text: '解禁失败!',
+                        delay: 1500,
+                        type: 'fail'
+                    });
+                }
+            })
+            /* operateFormatter();*/
         }
 
     }

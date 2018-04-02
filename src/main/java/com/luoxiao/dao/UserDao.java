@@ -22,5 +22,7 @@ public interface UserDao {
 	
 	int updateById(User record);
 
-	void banUserById(Integer id);
+	void blockUserById(Integer id);
+
+	void unblockUserById(Integer id);
 }

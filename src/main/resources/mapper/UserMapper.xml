@@ -157,9 +157,17 @@
 	</update>
 
     <!--禁用用户-->
-    <update id = "banUserById" parameterType="java.lang.Integer">
+    <update id = "blockUserById" parameterType="java.lang.Integer">
         UPDATE USER
         SET status = '0'
+        WHERE
+        id = #{id,jdbcType = INTEGER}
+    </update>
+
+    <!--解禁用户-->
+    <update id = "unblockUserById" parameterType="java.lang.Integer">
+        UPDATE USER
+        SET status = '1'
         WHERE
         id = #{id,jdbcType = INTEGER}
     </update>

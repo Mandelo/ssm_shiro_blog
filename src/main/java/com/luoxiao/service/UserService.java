@@ -21,5 +21,7 @@ public interface UserService {
 	
 	void deleteById(Integer id);
 
-	void banUserById(Integer id);
+	void blockUserById(Integer id);
+
+	void unblockUserById(Integer id);
 }
