@@ -189,6 +189,7 @@
                 operateFormatter();
             })
         },
+        /*禁用用户*/
         "click .btn-block1":function(e,value, row, index){
             var userId = row.id;
             $.ajax({
@@ -201,7 +202,7 @@
                             title: '操作成功',
                             delay: 1500,
                             text: '您已成功禁用名为' + row.username + '的用户!',
-                            text: '删除成功!',
+                            text: '禁用成功!',
                             type: 'success'
                         });
                     }
@@ -218,6 +219,7 @@
             })
            /* operateFormatter();*/
         },
+        /*解禁用户*/
         "click .btn-unblock1":function(e,value, row, index){
             var userId = row.id;
             $.ajax({
