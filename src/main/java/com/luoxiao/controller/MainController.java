@@ -242,7 +242,6 @@ public class MainController {
     @RequestMapping(value = "/getRoles")
     public UserRoleTemp roleManage(
             @RequestParam(value = "userId") Integer userId) {
-        // System.out.println(userId);
         UserRoleTemp u = new UserRoleTemp();
         User user = userService.selectById(userId);
         List<String> roles = userExtendService.getRoles(user.getUsername());

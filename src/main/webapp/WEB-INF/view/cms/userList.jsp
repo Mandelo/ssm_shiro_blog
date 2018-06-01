@@ -28,6 +28,7 @@
 <script>
 
     $(function () {
+        var userId = null;
         $("#date1").datetimepicker({
             format: 'yyyy-mm-dd',
             language: 'zh-CN',
@@ -99,6 +100,7 @@
             showHeader: true,
             pageNumber: 1,
             striped: true,
+            showRefresh:true,
             url: '${pageContext.request.contextPath }/cms/AllUser',
             onLoadSuccess: function () {  //加载成功时执行
                 console.info("加载成功");
@@ -159,12 +161,13 @@
     /*删除操作*/
     window.operateEvents1 = {
        "click .btn-delete": function (e, value, row, index) {
+           userId = row.id;
             $('#cfmMsg').html('确定要删除名为  ' + row.username + '  的用户吗?');
             $('#myModal1 .confirmDelete').click(function () {
                 $.ajax({
                     type: "post",
                     url: "${pageContext.request.contextPath}/deleteUser",
-                    data: {"id": row.id},
+                    data: {"id": userId,"date":new Date().getTime()},
                     success: function (data, status) {
                         if (status == "success") {
                             new PNotify({
@@ -179,7 +182,7 @@
                     },
                     error: function () {
                         new PNotify({
-                            title: '删除成功',
+                            title: '删除失败',
                             text: '删除失败!',
                             delay: 1500,
                             type: 'fail'
@@ -188,10 +191,11 @@
                 })
                 operateFormatter();
             })
+           $("#table1").bootstrapTable('refresh');
         },
         /*禁用用户*/
         "click .btn-block1":function(e,value, row, index){
-            var userId = row.id;
+            userId = row.id;
             $.ajax({
                 type: "post",
                 url: "${pageContext.request.contextPath}/blockUser",
