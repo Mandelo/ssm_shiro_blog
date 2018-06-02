@@ -198,6 +198,13 @@ public class MainController {
     @RequestMapping(value = "/cms/userManage")
     public ModelAndView userManage() {
         ModelAndView mv = new ModelAndView();
+        mv.setViewName("cms/userManage");
+        return mv;
+    }
+
+    @ResponseBody
+    @RequestMapping("/cms/userRoleList")
+    public List<UserRoleTemp> getUserRoleList(){
         List<User> userList = userService.selectAll();
         List<UserRoleTemp> userRoleList = new ArrayList<UserRoleTemp>();
         for (User user : userList) {
@@ -207,12 +214,9 @@ public class MainController {
             u.setId(user.getId());
             u.setUsername(user.getUsername());
             u.setRoles(roleList);
-            // System.out.println(u);
             userRoleList.add(u);
         }
-        mv.addObject("urList", userRoleList);
-        mv.setViewName("cms/userManage");
-        return mv;
+        return userRoleList;
     }
 
 

@@ -81,7 +81,7 @@
                 },
                 {
                     field: 'status',
-                    title: '状态',
+                    title: '状态码',
                     align: "center",
                     width: "5%"
                 },
@@ -100,7 +100,6 @@
             showHeader: true,
             pageNumber: 1,
             striped: true,
-            showRefresh:true,
             url: '${pageContext.request.contextPath }/cms/AllUser',
             onLoadSuccess: function () {  //加载成功时执行
                 console.info("加载成功");

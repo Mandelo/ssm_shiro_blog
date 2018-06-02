@@ -2,96 +2,102 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dth">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
-
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="${pageContext.request.contextPath }/style/js/jquery.min.js"></script>
-
-    <script
-            src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
-    <title>Insert title here</title>
-    <style type="text/css">
-        .table {
-            margin-top: 100px;
-        }
-
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle !important;
-        }
-
-        .glyphicon {
-            text-align: right;
-        }
-
-        .text {
-            bottom: 200px;
-            position: absolute;
-        }
-    </style>
 </head>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/bootstrap-table/bootstrap-table.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/userRoleList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/style/pnotify/pnotify.custom.min.css">
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath }/style/datetimepicker/css/bootstrap-datetimepicker.min.css">
+<script src="${pageContext.request.contextPath}/style/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath }/style/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/style/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="${pageContext.request.contextPath}/style/pnotify/pnotify.custom.min.js"></script>
+<script src="${pageContext.request.contextPath }/style/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script src="${pageContext.request.contextPath}/style/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/style/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script>
+    $(document).ready(function(){
+        $('#table1').bootstrapTable({
+            columns: [
+                {
+                    field: 'id',
+                    title: 'ID',
+                    align: "center",
+                    width: "5%"
+                },
+                {
+                    field: 'username',
+                    title: '用户名',
+                    align: "center",
+                    width: "10%"
+                },
+                {
+                    field: 'roles',
+                    title: '拥有角色',
+                    align: "center",
+                    width: "20%"
+                },
+                {
+                    field: 'option',
+                    title: '操作',
+                    width: "15%",
+                    align: "center",
+                    formatter: operateFormatter
+                }
+
+            ],
+            url: '${pageContext.request.contextPath }/cms/userRoleList',
+        })
+    })
+
+    function operateFormatter(){
+        return [
+            '<button type="button" class="btn btn-sm btn-warning btn-block1">修改</button>' + '&nbsp;'
+        ].join('');
+    }
+</script>
 <body>
-<form action="" method="POST" id="_form">
-    <input type="hidden" id="_method" name="_method"/>
-</form>
-<div class="container">
+<div class="search-wrap">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class='col-me-8'>
-            <table class='table table-bordered table-hover'>
-                <thead>
-                <td colspan="4"><h2>用户列表</h2></td>
-                </thead>
-                <tr>
-                    <th>UID</th>
-                    <th>用户名</th>
-                    <th>拥有角色</th>
-                    <th>操作</th>
-                </tr>
-                <c:forEach var="urt" items="${urList }">
-                    <tr>
-                        <td class="uid">${urt.id }</td>
-                        <td>${urt.username }</td>
-                        <td>${urt.roles }</td>
-                        <td>
-                            <c:if test="${urt.username != 'admin'}">
-
-                            <a href="${pageContext.request.contextPath }/deleteUser?id=${urt.id }"
-                               class="glyphicon glyphicon-remove">删除</a>
-
-                            <input type="hidden" value=" ${urt.username  } "/>
-                            <a href="${pageContext.request.contextPath }/roleManage?userId=${urt.id }"
-                               class="glyphicon glyphicon-pencil">修改</a>
-                            </c:if>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
+        <div class="col-md-2"><p class="search-title">会员查询(TODO)</p></div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="exampleInputName2" placeholder="请输入用户名.">
         </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class='input-group date' id='date1'>
+                    <input type='text' class="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary">查找</button>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
-<script type="text/javascript">
-    $(function () {
-        $(".glyphicon-remove").click(function () {
-            var label = $(this).next(":hidden").val();
-            var flag = confirm("确定要删除名为" + label + "的用户吗?");
-            if (flag) {
-                var url = $(this).attr("href");
-                $("#_form").attr("action", url);
-                $("#_method").val("GET");
-                $("#_form").submit();
-            }
-            return false;
-        });
-    })
-</script>
+<%--user list--%>
+<div class="result-wrap">
+    <div class="row">
+
+        <div class="col-md-12">
+            <table id="table1"></table>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
