@@ -127,7 +127,6 @@ public class MainController {
         subject.login(token);
         User loginUser = userService.selectByUsername(user.getUsername());
         session.setAttribute("loginUser", loginUser);
-        // System.out.println(loginUser);
         return "/loginSuccess";
     }
 

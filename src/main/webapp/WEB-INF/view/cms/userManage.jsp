@@ -24,7 +24,7 @@
 <script src="${pageContext.request.contextPath}/style/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"
         charset="UTF-8"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#table1').bootstrapTable({
             columns: [
                 {
@@ -48,9 +48,10 @@
                 {
                     field: 'option',
                     title: '操作',
-                    width: "15%",
+                    width: "5%",
                     align: "center",
-                    formatter: operateFormatter
+                    formatter: operateFormatter,
+                    events: operateEvents1
                 }
 
             ],
@@ -58,10 +59,21 @@
         })
     })
 
-    function operateFormatter(){
+    function operateFormatter() {
         return [
-            '<button type="button" class="btn btn-sm btn-warning btn-block1">修改</button>' + '&nbsp;'
+            '<button type="button" class="btn btn-sm btn-primary btn-edit">修改</button>' + '&nbsp;'
         ].join('');
+    }
+
+    window.operateEvents1 = {
+        "click .btn-edit": function (e, value, row, index) {
+            /* $("#panelBody").text(row.roles);*/
+            var userRoleStr = row.roles;
+            for(var i in userRoleStr){
+                console.log(userRoleStr[i]);
+            }
+
+        }
     }
 </script>
 <body>
@@ -91,11 +103,59 @@
 <%--user list--%>
 <div class="result-wrap">
     <div class="row">
-
-        <div class="col-md-12">
+        <div class="col-md-10">
             <table id="table1"></table>
         </div>
-
+        <%--panel--%>
+        <div class="col-md-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="panelHeading">角色列表</div>
+                <div class="panel-body" id="panelBody">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="admin">
+                            admin
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="user">
+                            user
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="JAVA_dev">
+                            JAVA_dev
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="IOS_dev">
+                            IOS_dev
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="PHP_dev">
+                            PHP_dev
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="manager">
+                            manger
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="loser">
+                            loser
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
