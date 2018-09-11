@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luoxiao.dao.LogDao">
+    <resultMap id="ResultMap" type="com.luoxiao.model.LogModal">
+        <id column="id" property="id" jdbcType="INTEGER"></id>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="ip" property="ip" jdbcType="VARCHAR"/>
+        <result column="time" property="time" jdbcType="TIMESTAMP"/>
+        <result column="operation" property="operation" jdbcType="VARCHAR"/>
+        <result column="result" property="result" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertLog">
+        INSERT INTO
+          log(username,ip,time,operation,result)
+        VALUES(
+        #{username,jdbcType = VARCHAR},
+        #{ip,jdbcType = VARCHAR},
+        #{time,jdbcType = TIMESTAMP},
+        #{operation,jdbcType = VARCHAR},
+        #{result,jdbcType = VARCHAR}
+        )
+    </insert>
+</mapper>

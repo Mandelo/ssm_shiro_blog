@@ -2,13 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
@@ -80,12 +76,11 @@
 		<property name="basePackage" value="com.luoxiao.dao"></property>
 	</bean>
 
-	<!-- aop -->
+	<!--线程池-->
 	<!--事务的通知 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- 方法名 传播级别 -->
-			<!-- <tx:method name="transfer" propagation="REQUIRED"/> -->
 			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
@@ -93,14 +88,6 @@
 			<tx:method name="*" propagation="NOT_SUPPORTED" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
-	<!--将事务管理应用在切入点（Pointcut）上 -->
-	<aop:config>
-		<!--这个切面表示所有service层的方法 -->
-		<aop:pointcut id="serviceTransaction"
-			expression="execution(* cn.jxnu.service.*Service*.*(..))" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceTransaction" />
-	</aop:config>
-
 	<!-- shiro配置 -->
 	<!-- 自定义Realm -->
 	<bean id="myRealm" class="com.luoxiao.realm.MyRealm" />

@@ -58,7 +58,7 @@
 		where 
 		user_id = #{userId}
 	</select>
-	
+
 	<delete id="deleteById" parameterType="java.lang.Integer">
 		delete from blog
 		where id = #{id}

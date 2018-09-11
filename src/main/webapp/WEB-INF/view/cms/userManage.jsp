@@ -56,6 +56,12 @@
 
             ],
             url: '${pageContext.request.contextPath }/cms/userRoleList',
+            pagination: true,
+            pageList: [10, 15],
+            search: false,
+            showHeader: true,
+            pageNumber: 1,
+            striped: true
         })
     })
 
@@ -67,14 +73,23 @@
 
     window.operateEvents1 = {
         "click .btn-edit": function (e, value, row, index) {
-            /* $("#panelBody").text(row.roles);*/
-            var userRoleStr = row.roles;
-            for(var i in userRoleStr){
-                console.log(userRoleStr[i]);
-            }
-
+            $('#panelHeading').html(row.username+"&nbsp;"+'<a href="wer" style="color: #FFFFFF;font-size: 15px;align:right">[保存]</a>');
+            $('#rolePanel').show();
+            var userRoleStr = row.roles;//该行角色数组
+            var roleOptions = [];//所有选项值
+            $("input[type='checkbox']").removeAttr("checked");
+            roleOptions = $("input[name = 'userRoles']").each(function () {
+                // console.log($(this).val())
+                for (var i = 0; i < userRoleStr.length; i++) {
+                    if (userRoleStr[i] == $(this).val()) {
+                        $(this).prop("checked", true);
+                    }
+                }
+            })
         }
     }
+
+
 </script>
 <body>
 <div class="search-wrap">
@@ -108,8 +123,8 @@
         </div>
         <%--panel--%>
         <div class="col-md-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading" id="panelHeading">角色列表</div>
+            <div class="panel panel-primary" id="rolePanel" style="display: none">
+                <div class="panel-heading" id="panelHeading">修改角色</div>
                 <div class="panel-body" id="panelBody">
                     <div class="checkbox">
                         <label>
@@ -129,9 +144,21 @@
                             JAVA_dev
                         </label>
                     </div>
-                    <div class="checkbox">
+                    <div class="checkbox" id="a">
                         <label>
                             <input type="checkbox" name="userRoles" value="IOS_dev">
+                            IOS_dev
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="PHP_dev">
+                            IOS_dev
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="userRoles" value="C++_dev">
                             IOS_dev
                         </label>
                     </div>
@@ -145,12 +172,6 @@
                         <label>
                             <input type="checkbox" name="userRoles" value="manager">
                             manger
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="loser">
-                            loser
                         </label>
                     </div>
                 </div>
