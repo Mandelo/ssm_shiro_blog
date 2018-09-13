@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dth">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -65,13 +65,6 @@ table td {
 							<option value="C_dev">C_dev</option>
 					</select></td>
 				</tr>
-				<tr>
-					<td colspan="2"><button class="btn btn-primary" type="button"
-							value="保存" onclick="update();">保存</button> <!-- 返回并刷新 -->
-						<button type="button" value="返回" class="btn btn-default"
-							onclick="javascript:location.href=document.referrer; ">返回</button></td>
-
-				</tr>
 			</table>
 		</form>
 	</div>
@@ -100,7 +93,7 @@ table td {
 		})
 
 		/* 填充返回数据 */
-		function loadData(res) {
+	/*	function loadData(res) {
 			var url = location.search;
 			if (url.indexOf("?") != -1) {
 				var str = url.substr(1);
@@ -118,10 +111,10 @@ table td {
 					}
 				})
 			}
-		}
+		}*/
 
 		/*点击保存按钮更新数据  */
-		function update() {
+/*		function update() {
 			var url = location.search;
 			if (url.indexOf("?") != -1) {
 				var str = url.substr(1);
@@ -132,7 +125,7 @@ table td {
 					roles.push($(this).text());
 				});
 				var roleStr = roles.join(",");
-				/* alert(roleStr); */
+				/!* alert(roleStr); *!/
 				$.ajax({
 					url : "updateRoles",
 					method : "GET",
@@ -147,7 +140,7 @@ table td {
 					}
 				})
 			}
-		}
+		}*/
 	</script>
 </body>
 </html>

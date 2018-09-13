@@ -204,7 +204,7 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/cms/userRoleList")
-    public List<UserRoleTemp> getUserRoleList(){
+    public List<UserRoleTemp> getUserRoleList() {
         List<User> userList = userService.selectAll();
         List<UserRoleTemp> userRoleList = new ArrayList<UserRoleTemp>();
         for (User user : userList) {
@@ -267,7 +267,7 @@ public class MainController {
             @RequestParam(value = "userId") Integer userId,
             @RequestParam(value = "roleStr") String roleStr) {
         UserRoleTemp u = new UserRoleTemp();
-		/* System.out.println(roleStr); */
+        System.out.println(roleStr);
         // 根据用户userId删除所有RoleId
         userRoleService.deleteById(userId);
         // 遍历角色名
@@ -280,7 +280,7 @@ public class MainController {
             userRole.setRoleId(roleId);
             userRoleService.insert(userRole);
         }
-        // 重新获取结果
+
         User user = userService.selectById(userId);
         List<String> roles = userExtendService.getRoles(user.getUsername());
         u.setId(userId);

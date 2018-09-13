@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by losho
+ * 日志切面
  */
 @Aspect
 @Component
@@ -46,7 +46,7 @@ public class LogAspect {
 
     }
 
-    //登录
+    //登录 后置通知
     @After("loginPointcut()")
     public void login(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();

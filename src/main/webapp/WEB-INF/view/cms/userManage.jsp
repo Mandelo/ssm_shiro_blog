@@ -6,7 +6,6 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 </head>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/style/css/bootstrap-theme.min.css">
@@ -67,20 +66,19 @@
 
     function operateFormatter() {
         return [
-            '<button type="button" class="btn btn-sm btn-primary btn-edit">修改</button>' + '&nbsp;'
+            '<button type="button" class="btn btn-sm btn-primary btn-edit" data-toggle="modal" data-target="#myModal">修改</button>' + '&nbsp;'
         ].join('');
     }
 
     window.operateEvents1 = {
         "click .btn-edit": function (e, value, row, index) {
-            $('#panelHeading').html(row.username+"&nbsp;"+'<a href="wer" style="color: #FFFFFF;font-size: 15px;align:right">[保存]</a>');
-            $('#rolePanel').show();
-            var userRoleStr = row.roles;//该行角色数组
-            var roleOptions = [];//所有选项值
-            $("input[type='checkbox']").removeAttr("checked");
-            roleOptions = $("input[name = 'userRoles']").each(function () {
-                // console.log($(this).val())
+            $('#myModalLabel').html(row.username);
+            $('#currId').val(row.id);
+            var userRoleStr = row.roles;
+            $('input[type = "checkbox"]').removeAttr("checked");//初始化,清空
+            $('input[name="userRoles"]').each(function () {
                 for (var i = 0; i < userRoleStr.length; i++) {
+                    console.log($(this).val);
                     if (userRoleStr[i] == $(this).val()) {
                         $(this).prop("checked", true);
                     }
@@ -89,6 +87,32 @@
         }
     }
 
+    function updateRoles(){
+        var userId =  $('#currId').val();
+        var roles = [];
+        console.log(userId);//当前用户id
+        $('input[name="userRoles"]').each(function(){
+            if($(this).is(":checked")){
+                roles.push($(this).val());
+            }
+        })
+        console.log(roles);
+        var roleStr = roles.join(",");
+        $.ajax({
+            url:"${pageContext.request.contextPath }/updateRoles",
+            method:"GET",
+            data:{
+                "userId" : userId,
+                "roleStr" : roleStr
+            },
+            async:true,
+            success:function(data){
+                console.log("success");
+                $("#table1").bootstrapTable('refresh');
+            }
+
+        })
+    }
 
 </script>
 <body>
@@ -121,64 +145,48 @@
         <div class="col-md-10">
             <table id="table1"></table>
         </div>
-        <%--panel--%>
-        <div class="col-md-2">
-            <div class="panel panel-primary" id="rolePanel" style="display: none">
-                <div class="panel-heading" id="panelHeading">修改角色</div>
-                <div class="panel-body" id="panelBody">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="admin">
-                            admin
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="user">
-                            user
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="JAVA_dev">
-                            JAVA_dev
-                        </label>
-                    </div>
-                    <div class="checkbox" id="a">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="IOS_dev">
-                            IOS_dev
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="PHP_dev">
-                            IOS_dev
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="C++_dev">
-                            IOS_dev
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="PHP_dev">
-                            PHP_dev
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="userRoles" value="manager">
-                            manger
-                        </label>
-                    </div>
+    </div>
+</div>
+
+<!-- 修改角色Modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title" id="myModalLabel"></h5>
+            </div>
+            <%--modal body--%>
+            <div class="modal-body" style="height: 300px;">
+                <label>角色管理</label>
+                <div class="checkbox" style="padding-left: 10px;">
+                    <label class="roleOption">
+                        <input name="userRoles" type="checkbox" value="admin">管理员
+                    </label>&nbsp;
+                    <label class="roleOption">
+                        <input name="userRoles" type="checkbox" value="manager">经理
+                    </label>&nbsp;
+                    <label class="roleOption">
+                        <input name="userRoles" type="checkbox" value="IOS_dev">ios开发
+                    </label>&nbsp;
+                    <label class="roleOption">
+                        <input name="userRoles" type="checkbox" value="JAVA_dev">java开发
+                    </label>&nbsp;
+                    <label class="roleOption">
+                        <input name="userRoles" type="checkbox" value="C++_dev">C++开发
+                    </label>&nbsp;
+                    <label class="roleOption">
+                        <input name="userRoles" type="checkbox" value="user">用户
+                    </label>&nbsp;
+                    <input id="currId" type="hidden" value="">
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="updateRoles()">提交更改</button>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -90,7 +90,10 @@
 	</tx:advice>
 	<!-- shiro配置 -->
 	<!-- 自定义Realm -->
-	<bean id="myRealm" class="com.luoxiao.realm.MyRealm" />
+	<bean id="myRealm" class="com.luoxiao.realm.MyRealm" >
+		<!--配置权限缓存-->
+		<property name="authorizationCachingEnabled" value="false"/>
+	</bean>
 
 	<!-- 安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">

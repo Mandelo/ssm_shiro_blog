@@ -291,7 +291,7 @@
 
     </div>
 </div>
-<!-- 删除模态框（Modal） -->
+<!-- 删除用户模态框（Modal） -->
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
