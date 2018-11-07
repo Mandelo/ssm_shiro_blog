@@ -4,10 +4,10 @@
 <h2>已实现功能</h2>
 <ul>
 <li>登录注册ajax校验</li>
-<li>jquert仿google智能搜索提示</li>
+<li>jquery仿google智能搜索提示</li>
 <li>富文本博客提交框</li>
 <li>基于shiro的后台管理：用户管理，角色-权限分配等</li>
-<li>基于aspectJ的日志系统</li>
+<li>基于AspectJ的日志系统</li>
 </ul>
 <h2>快速使用</h2>
 <ul>
